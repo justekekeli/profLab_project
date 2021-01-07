@@ -1,17 +1,13 @@
 <?php
-class FieldDAO{
-    private $field;
-    private static $connection;
+class FieldDAO extends Database{
 
-    function __construct(Field $field,$connection){
-        $this->field= $field;
-        self::$connection=$connection;
+    function __construct(){
+        parent::getInstance();
     }
-    public function insert(){
-        $sql="INSERT INTO `Course_Field`(`id`, `title`, `Add_date`) VALUES (:id,:title,curdate())";
+    public function insert($title){
+        $sql="INSERT INTO `Course_Field`(`title`, `Add_date`) VALUES (:title,curdate())";
         $query = self::$connection->prepare($sql);
-        $query->bindValue(':id', $this->field->id(), PDO::PARAM_INT);
-        $query->bindValue(':title',$this->field->title(), PDO::PARAM_STR);
+        $query->bindValue(':title',$title, PDO::PARAM_STR);
         $query->execute();
         return "Le domaine a été créé avec succès.";
     }
@@ -33,18 +29,18 @@ class FieldDAO{
 
         return $result;
     }
-    public function update(String $title){
+    public function update(int $id,String $title){
         $sql = "UPDATE `Course_Field` SET `title`=:val WHERE `id`=:id;";
         $query = self::$connection->prepare($sql);
         $query->bindValue(':val', $title, PDO::PARAM_STR);
-        $query->bindValue(':id', $this->field->id(), PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
         $query->execute();
         return "le titre a été bien changé";
     }
-    public function delete(){
+    public function delete($id){
         $sql = "DELETE FROM `Course_Field` WHERE `id`=:id;";
         $query = self::$connection->prepare($sql);
-        $query->bindValue(':id', $this->field->id(), PDO::PARAM_INT);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         return "Suppression effectuée";
        

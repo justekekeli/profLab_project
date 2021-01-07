@@ -1,18 +1,13 @@
 <?php
 
-class CourseClassDAO{
-    private $classe;
-    private static $connection;
-
-    function __contruct(CourseClass $classe,$connection){
-        $this->classe=$classe;
-        self::$connection=$connection;
+class CourseClassDAO extends Database{
+    function __contruct(){
+        parent::getInstance();
     }
-    public function insert(){
-        $sql = "INSERT INTO `CourseClass`(`id`, `title`) VALUES (:id,:title);";
+    public function insert($name){
+        $sql = "INSERT INTO `CourseClass`( `title`) VALUES (:title);";
         $query = self::$connection->prepare($sql);
-        $query->bindValue(':id', $this->classe->id(), PDO::PARAM_INT);
-        $query->bindValue(':title',$this->classe->title(), PDO::PARAM_STR);
+        $query->bindValue(':title',$name, PDO::PARAM_STR);
         $query->execute();
         return "La classe a été bien ajouté";
     }
@@ -35,18 +30,18 @@ class CourseClassDAO{
 
         return $result;
     }
-    public function update(String $title){
+    public function update(int $id,String $title){
         $sql = "UPDATE `CourseClass` SET `title`=:title WHERE `id`=:id;";
         $query->bindValue(':title', $title, PDO::PARAM_STR);
-        $query->bindValue(':id', $this->classe->id(), PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
         $query = self::$connection->prepare($sql);
         $query->execute();
         return "Titre modifié";
     }
-    public function delete(){
+    public function delete($id){
         $sql = "DELETE FROM `CourseClass` WHERE `id`=:id;";
         $query = self::$connection->prepare($sql);
-        $query->bindValue(':id', $this->classe->id(), PDO::PARAM_INT);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         return "Suppression effectuée";
     }

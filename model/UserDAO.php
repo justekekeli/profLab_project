@@ -1,21 +1,19 @@
 <?php
 
-   class UserDAO{
-       private $user;
-       private static $connection;
-       function __construct(User $user,$connection){
-           $this->user = $user;
-           self::$connection=$connection;
+   class UserDAO extends Database{
+
+       function __construct(){
+         parent::getInstance();
        }
-       public function insert(){
+       public function insert($array){
         $sql = "INSERT INTO `App_User`(`email`, `lastname`, `firstname`, `roleUser`, `work`, `pwd`,`Inscription_date`) VALUES (:email,:lastname,:firstname,:roleUser,:work,:pwd,curdate());";
         $query = self::$connection->prepare($sql);
-        $query->bindValue(':email', $this->user->email(), PDO::PARAM_STR);
-        $query->bindValue(':lastname',$this->user->lastname(), PDO::PARAM_STR);
-        $query->bindValue(':firstname',$this->user->firstname(), PDO::PARAM_STR);
-        $query->bindValue(':roleUser', $this->user->roleUser(), PDO::PARAM_STR);
-        $query->bindValue(':work',$this->user->work(), PDO::PARAM_STR);
-        $query->bindValue(':pwd', $this->user->pwd(), PDO::PARAM_STR);
+        $query->bindValue(':email', $array['email'], PDO::PARAM_STR);
+        $query->bindValue(':lastname',$array['lastname'], PDO::PARAM_STR);
+        $query->bindValue(':firstname',$array['firstname'], PDO::PARAM_STR);
+        $query->bindValue(':roleUser', $array['roleUser'], PDO::PARAM_STR);
+        $query->bindValue(':work',$array['work'], PDO::PARAM_STR);
+        $query->bindValue(':pwd', $array['pwd'], PDO::PARAM_STR);
         $query->execute();
         return "Le compte a été bien créé";
        }
@@ -38,23 +36,23 @@
 
             return $result;
        }
-       public function update(String $lastN,String $firstN,String $rol,String $work,String $pwd){
+       public function update($array){
             $sql="UPDATE `App_User` SET `lastname`=:lastN,`firstname`=:firstN,`roleUser`=:rol,`work`=:work,`pwd`=:pwd WHERE `email`=:email;";
-            $query->bindValue(':lastN',$lastN, PDO::PARAM_STR);
-            $query->bindValue(':firstN',$firstN, PDO::PARAM_STR);
-            $query->bindValue(':rol', $rol, PDO::PARAM_STR);
-            $query->bindValue(':work',$work, PDO::PARAM_STR);
-            $query->bindValue(':pwd', $pwd, PDO::PARAM_STR);
-            $query->bindValue(':email', $this->user->email(), PDO::PARAM_STR);
+            $query->bindValue(':lastN',$array['lastname'], PDO::PARAM_STR);
+            $query->bindValue(':firstN',$array['firstname'], PDO::PARAM_STR);
+            $query->bindValue(':rol', $array['roleUser'], PDO::PARAM_STR);
+            $query->bindValue(':work',$array['work'], PDO::PARAM_STR);
+            $query->bindValue(':pwd', $array['pwd'], PDO::PARAM_STR);
+            $query->bindValue(':email', $array['email'], PDO::PARAM_STR);
             $query->execute();
             return "La modification a été un succès";
         }
-       public function updateEmail($email){
+       public function updateEmail($email,$old){
         $researchArray = $this->readByEmail($email);
         if(empty($researchArray)){
             $sql = "UPDATE `App_User` SET `email`=:val WHERE `email`=:email;";
             $query->bindValue(':val', $email, PDO::PARAM_STR);
-            $query->bindValue(':email', $this->user->email(), PDO::PARAM_STR);
+            $query->bindValue(':email', $old, PDO::PARAM_STR);
             $query = self::$connection->prepare($sql);
             $query->execute();
             return "Email mis à jour";
@@ -62,10 +60,10 @@
         return "Ce email existe déjà pour un compte";
 
        }
-       public function delete(){
+       public function delete($email){
         $sql = "DELETE FROM `App_User` WHERE `email`=:email;";
         $query = self::$connection->prepare($sql);
-        $query->bindValue(':email', $this->user->email(), PDO::PARAM_STR);
+        $query->bindValue(':email', $email, PDO::PARAM_STR);
         $query->execute();
         return "Suppression effectuée";
        }

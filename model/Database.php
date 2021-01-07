@@ -2,13 +2,13 @@
 
 class DataBase {
 
-	protected static $instance=null;
+	protected static $connection=null;
 
 	protected function __construct() {}
 
 	public static function getInstance() {
 
-		if(empty(self::$instance)) {
+		if(empty(self::$connection)) {
 
 			$db_info = array(
 				"db_host" => "localhost",
@@ -19,10 +19,10 @@ class DataBase {
 				"db_charset" => "UTF-8");
 
 			try {
-				self::$instance = new PDO("mysql:host=".$db_info['db_host'].';port='.$db_info['db_port'].';dbname='.$db_info['db_name'], $db_info['db_user'], $db_info['db_pass']);
-				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);  
-				self::$instance->query('SET NAMES utf8');
-				self::$instance->query('SET CHARACTER SET utf8');
+				self::$connection = new PDO("mysql:host=".$db_info['db_host'].';port='.$db_info['db_port'].';dbname='.$db_info['db_name'], $db_info['db_user'], $db_info['db_pass']);
+				self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);  
+				self::$connection->query('SET NAMES utf8');
+				self::$connection->query('SET CHARACTER SET utf8');
 
 			} catch(PDOException $error) {
 				echo $error->getMessage();
@@ -34,7 +34,7 @@ class DataBase {
 	}
 	
 	public function closeConnection(){
-		self::$instance=null;
+		self::$connection=null;
 	}
 }
 
