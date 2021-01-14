@@ -1,29 +1,30 @@
 <?php
 
-class CourseClassDAO extends Database{
-    function __contruct(){
-        parent::getInstance();
+class CourseClassDAO{
+    private $connection;
+    function __contruct($connection){
+       $this->connection =$connection;
     }
     public function insert($name){
         $sql = "INSERT INTO `CourseClass`( `title`) VALUES (:title);";
-        $query = self::$connection->prepare($sql);
+        $query = $this->connection->prepare($sql);
         $query->bindValue(':title',$name, PDO::PARAM_STR);
         $query->execute();
         return "La classe a été bien ajouté";
     }
     public function readAll(){
         $sql = "SELECT * FROM `CourseClass` ORDER BY `title`;";
-        $query = self::$connection->prepare($sql);
+        $query = $this->connection->prepare($sql);
         $query->execute();
 
        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function readById($id){
+    public function readByTitle($title){
         $result =null;
         if(!empty($id)){
-            $sql = "SELECT * FROM `CourseClass` WHERE `id`=:id;";
-            $query->bindValue(':id', $id, PDO::PARAM_INT);
-            $query = self::$connection->prepare($sql);
+            $sql = "SELECT * FROM `CourseClass` WHERE `title`=:title;";
+            $query = $this->connection->prepare($sql);
+            $query->bindValue(':id', $id, PDO::PARAM_STR);
             $query->execute();
             $result=$query->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -32,15 +33,15 @@ class CourseClassDAO extends Database{
     }
     public function update(int $id,String $title){
         $sql = "UPDATE `CourseClass` SET `title`=:title WHERE `id`=:id;";
+        $query = $this->connection->prepare($sql);
         $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':id', $id, PDO::PARAM_STR);
-        $query = self::$connection->prepare($sql);
         $query->execute();
         return "Titre modifié";
     }
     public function delete($id){
         $sql = "DELETE FROM `CourseClass` WHERE `id`=:id;";
-        $query = self::$connection->prepare($sql);
+        $query = $this->connection->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         return "Suppression effectuée";

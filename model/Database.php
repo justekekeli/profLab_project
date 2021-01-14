@@ -4,7 +4,7 @@ class DataBase {
 
 	protected static $connection=null;
 
-	protected function __construct() {}
+	private function __construct() {}
 
 	public static function getInstance() {
 
