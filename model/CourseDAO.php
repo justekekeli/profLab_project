@@ -17,9 +17,18 @@
         $query->execute();
         return "Le cours a été bien ajouté";
      }
-     public function readByField($field){
-        $sql = "SELECT * FROM `Course` WHERE `field_id`=:field ;";
-        $query->bindValue(':field', $field, PDO::PARAM_INT);
+     public function readByAttribute($val,$attribute){
+        $sql="";
+        if($attribute=="field"){
+         $sql = "SELECT * FROM `Course` WHERE `field_id`=:val ;";
+        }
+        if($attribute=="prof"){
+         $sql = "SELECT * FROM `Course` WHERE `prof_id`=:val ;";
+        }
+        if($attribute=="student"){
+         $sql = "SELECT Course.* FROM `Course`,`Student_Course` WHERE `idStudent`=:val AND `idCourse`=`Course.id`;";
+        }
+        $query->bindValue(':val', $val, PDO::PARAM_INT);
         $query = $this->connection->prepare($sql);
         $query->execute();
 

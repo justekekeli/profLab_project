@@ -1,10 +1,5 @@
 <?php
-require('../model/Database.php');
-require('../model/CourseDAO.php');
-require('../model/CommentDAO.php');
-require('../model/UserdDAO.php');
-
-class CourseController{
+class CommentController{
     private $message='';
     private $conn;
     private $comment;

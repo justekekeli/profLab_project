@@ -37,6 +37,15 @@
 
             return $result;
        }
+       public function search($email,$pwd){
+            $sql = "SELECT * FROM `App_User` WHERE `email`=:email AND `pwd`=:pwd ;";
+            $query = $this->connection->prepare($sql);
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
+            $query->bindValue(':pwd', $pwd, PDO::PARAM_STR);
+            $query->execute();
+            $result=$query->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+       }
        public function update($array){
             $sql="UPDATE `App_User` SET `lastname`=:lastN,`firstname`=:firstN,`presentation`=:pre,`roleUser`=:rol,`work`=:work,`pwd`=:pwd WHERE `email`=:email;";
             $query = $this->connection->prepare($sql);
@@ -52,7 +61,7 @@
         }
        public function updateEmail($email,$old){
         $researchArray = $this->readByEmail($email);
-        if(empty($researchArray)){
+        if(!empty($researchArray)){
             $sql = "UPDATE `App_User` SET `email`=:val WHERE `email`=:email;";
             $query = $this->connection->prepare($sql);
             $query->bindValue(':val', $email, PDO::PARAM_STR);

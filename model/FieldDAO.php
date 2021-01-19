@@ -12,7 +12,7 @@ class FieldDAO{
         return "Le domaine a été créé avec succès.";
     }
     public function readAll(){
-        $sql="SELECT * FROM `Course_Field` ORDER BY `Add_date`";
+        $sql="SELECT * FROM `Course_Field` ORDER BY `title`";
         $query = $this->connection->prepare($sql);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);

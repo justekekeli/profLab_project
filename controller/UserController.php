@@ -1,8 +1,4 @@
 <?php
-require('../model/Database.php');
-require('../model/UserDAO.php');
-require('../model/OpinionDAO.php');
-require('../model/CourseDAO.php');
 
 class UserController{
     private $message='';
@@ -36,7 +32,7 @@ class UserController{
             'presentation'=>$presentation,
             'roleUser' =>$role,
             'work'=>$work,
-            'pwd'=>Crypt::encrypt($pwd)
+            'pwd'=>md5($pwd)
         );
         $message = $this->user->insert($newUser);
         require('../view/test.php'); 

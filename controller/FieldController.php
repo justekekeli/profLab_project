@@ -1,7 +1,4 @@
 <?php
-require('../model/Database.php');
-require('../model/FieldDAO.php');
-require('../model/Course.php');
 
 class FieldController{
     private $message='';

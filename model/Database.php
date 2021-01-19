@@ -15,7 +15,7 @@ class DataBase {
 				"db_port" => "3306",
 				"db_user" => "root",
 				"db_pass" => "",
-				"db_name" => "profLab",
+				"db_name" => "profLabdb",
 				"db_charset" => "UTF-8");
 
 			try {
@@ -30,7 +30,7 @@ class DataBase {
 
 		}
 
-		return self::$instance;
+		return self::$connection;
 	}
 	
 	public function closeConnection(){
