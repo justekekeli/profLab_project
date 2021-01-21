@@ -30,29 +30,28 @@
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h3 class="thin text-center">Connecter vous a votre compte</h3>
+							<h3 class="thin text-center">Connectez vous a votre compte</h3>
 							<p class="text-center text-muted">si vous n'avez pas de compte, <a href="index.php?action=signupForm">Inscrivez vous</a> clickez sur le liens pour vous inscrire</p>
 							<hr>
 							
-							<form>
+							<form action="index.php?action=auth" method="post">
 								<div class="top-margin">
-									<label>Username/Email <span class="text-danger">*</span></label>
-									<input type="text" class="form-control">
+									<label>Email <span class="text-danger">*</span></label>
+									<input type="email" class="form-control" name="email" required>
 								</div>
 								<div class="top-margin">
-									<label>Password <span class="text-danger">*</span></label>
-									<input type="password" class="form-control">
+									<label>Mot de passe <span class="text-danger">*</span></label>
+									<input type="password" class="form-control" name="pwd" required>
 								</div>
-
+								<?php if(!empty($message)){ echo '<p style="color:red;">'.$message.'</p>';}?>
 								<hr>
 
 								<div class="row">
 									<div class="col-lg-8">
-										<b><a href="">Mot de passe oublier?</a></b>
+										<b><a href="">Mot de passe oublié?</a></b>
 									</div>
 									<div class="col-lg-4 text-right">
-										<!--button class="btn btn-action" type="submit">Sign in</button-->
-										<a class="btn btn-action" href="index.php?action=bord"> SIGN IN </a>
+										<input class="btn btn-action" type="submit" value="Se connecter"/>
 									</div>
 								</div>
 							</form>

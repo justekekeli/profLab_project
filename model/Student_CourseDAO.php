@@ -23,15 +23,13 @@ class Student_CourseDAO {
         }
         return $result;
     }
-    public function readByStudent(int $value){
-        $result=null;
-        if(!empty($value)){
-            $sql = "SELECT * FROM `Student_Course` WHERE `idStudent`=:id ;";
+    public function readByStudent(String $value){
+            $sql = "SELECT Course.*,`start`,`end` FROM `Student_Course`,`Course` WHERE `idStudent`=:id AND Course.id=idCourse ;";
             $query = $this->connection->prepare($sql);
-            $query->bindValue(':id', $value, PDO::PARAM_INT);
+            $query->bindValue(':id', $value, PDO::PARAM_STR);
             $query->execute();
             $result=$query->fetchAll(PDO::FETCH_ASSOC);
-        }
+        
         return $result;
     }
     public function readByCourse(int $value){

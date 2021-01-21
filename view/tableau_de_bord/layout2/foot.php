@@ -24,3 +24,17 @@
   <script type="text/javascript" src="lib/gritter-conf.js"></script>
   <!--script for this page-->
   <script type="text/javascript" src="view/tableau_de_bord/assets/js/acceuil.js"> </script>
+
+  <script type="text/javascript">
+   function active(elem) {
+    // get all 'a' elements
+    var a = document.getElementsByTagName('a');
+    // loop through all 'a' elements
+    for (i = 0; i < a.length; i++) {
+        // Remove the class 'active' if it exists
+        a[i].classList.remove('active')
+    }
+    // add 'active' classs to the element that was clicked
+    elem.classList.add('active');
+}
+   </script>

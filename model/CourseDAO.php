@@ -5,11 +5,12 @@
       $this->connection=$connection;
      }
      public function insert($array){
-        $sql = "INSERT INTO `Course`( `title`, `price`,`seanceTime`, `prof_id`, `class_id`, `field_id`, `descriptionCourse`) VALUES (:title,:price,:seanceTime,:prof,:class_id,:field_id,:descriptionCrs);";
+        $sql = "INSERT INTO `Course`( `title`, `daySeance`,`seanceStart`,`seanceEnd`, `prof_id`, `class_id`, `field_id`, `descriptionCourse`) VALUES (:title,:daySeance,:seanceS,:seanceE,:prof,:class_id,:field_id,:descriptionCrs);";
         $query = $this->connection->prepare($sql);
         $query->bindValue(':title',$array['title'], PDO::PARAM_STR);
-        $query->bindValue(':price',$array['price'], PDO::PARAM_INT);
-        $query->bindValue(':seanceTime', $array['seanceTime'], PDO::PARAM_STR);
+        $query->bindValue(':daySeance',$array['day'], PDO::PARAM_STR);
+        $query->bindValue(':seanceS', $array['start'], PDO::PARAM_STR);
+        $query->bindValue(':seanceE', $array['end'], PDO::PARAM_STR);
         $query->bindValue(':prof', $array['prof'], PDO::PARAM_STR);
         $query->bindValue(':class_id',$array['class_id'], PDO::PARAM_INT);
         $query->bindValue(':field_id', $array['field_id'], PDO::PARAM_INT);
@@ -20,7 +21,7 @@
      public function readByAttribute($val,$attribute){
         $sql="";
         if($attribute=="field"){
-         $sql = "SELECT * FROM `Course` WHERE `field_id`=:val ;";
+         $sql = "SELECT Course.*,CourseClass.title as classe,App_User.lastname as profL,App_User.firstname as profF FROM `Course`,`CourseClass`,`App_User` WHERE `field_id`=:val AND `prof_id`=App_User.email AND `class_id`=CourseClass.id;";
         }
         if($attribute=="prof"){
          $sql = "SELECT * FROM `Course` WHERE `prof_id`=:val ;";
@@ -28,8 +29,8 @@
         if($attribute=="student"){
          $sql = "SELECT Course.* FROM `Course`,`Student_Course` WHERE `idStudent`=:val AND `idCourse`=`Course.id`;";
         }
-        $query->bindValue(':val', $val, PDO::PARAM_INT);
         $query = $this->connection->prepare($sql);
+        $query->bindValue(':val', $val, PDO::PARAM_INT);
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -46,26 +47,27 @@
 
             return $result;
      }
-     public function readByProf(String $email){
-      $result =null;
-      if(!empty($id)){
+    /* public function readByProf(String $email){
+      
           $sql = "SELECT * FROM `Course` WHERE `prof_id`=:id;";
           $query = $this->connection->prepare($sql);
           $query->bindValue(':id', $email, PDO::PARAM_INT);
           $query->execute();
-          $result=$query->fetchAll(PDO::FETCH_ASSOC);
-      }
+          $result=$query->fetchAll();
+      
 
           return $result;
-      }
+      }*/
+      
      public function update($array){
-        $sql="UPDATE `Course` SET `title`=:title,`price`=:price],`seanceTime`=:seanceTime,`prof_id`=:prof,`class_id`=:class_id,`field_id`=:field_id,`descriptionCourse`=:descriptionCrs WHERE `id`=:id;";
+        $sql="UPDATE `Course` SET `title`=:title,`daySeance`=:daySeance],`seanceStart`=:seanceS,`seanceEnd`=:seanceEnd,`prof_id`=:prof,`class_id`=:class_id,`field_id`=:field_id,`descriptionCourse`=:descriptionCrs WHERE `id`=:id;";
         $query = $this->connection->prepare($sql);
         $query->bindValue(':id', $array['id'], PDO::PARAM_INT);
         $query->bindValue(':title',$array['title'], PDO::PARAM_STR);
-        $query->bindValue(':price',$array['price'], PDO::PARAM_INT);
-        $query->bindValue(':price',$array['price'], PDO::PARAM_INT);
-        $query->bindValue(':seanceTime', $array['seanceTime'], PDO::PARAM_STR);
+        $query->bindValue(':daySeance',$array['day'], PDO::PARAM_STR);
+        $query->bindValue(':seanceS', $array['start'], PDO::PARAM_STR);
+        $query->bindValue(':seanceE', $array['end'], PDO::PARAM_STR);
+        $query->bindValue(':prof', $array['prof'], PDO::PARAM_STR);
         $query->bindValue(':class_id',$array['class_id'], PDO::PARAM_INT);
         $query->bindValue(':field_id', $array['field_id'], PDO::PARAM_INT);
         $query->bindValue(':descriptionCrs', $array['desc'], PDO::PARAM_STR);

@@ -9,6 +9,7 @@ require('model/Database.php');
 require('model/CourseDAO.php');
 require('model/CommentDAO.php');
 require('model/UserDAO.php');
+require('model/Student_CourseDAO.php');
 require('model/FieldDAO.php');
 require('model/CourseClassDAO.php');
 //création d'une instance de HomeController
@@ -22,23 +23,29 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                     $homeController->authentificate($_POST['email'],$_POST['pwd']);
                 }
             break;
+            //si l'action est une inscription
             case 'signup':
-                if(isset($_POST['email']) && isset($_POST['pwd'])&& isset($_POST['role'])){
-                        $homeController->signup($_POST['email'],$_POST['role'],$_POST['pwd']);
+                if(!empty($_POST['email']) && !empty($_POST['pwd']) && !empty($_POST['role']) && !empty($_POST['nom']) && !empty($_POST['prenom'])){
+                            $homeController->signup($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['role'],$_POST['pwd']);
                 }
             break;
+            //formulaire d'inscription
             case 'signupForm':
                 require('view/public/signup.php');
             break;
+            //formulaire de connexion
             case 'signin':
                 require('view/public/signin.php');
             break;
+            //page d'a propos
             case 'about':
                 require('view/public/about.php');
             break;
+            //page de contact
             case 'contact':
                 require('view/public/contact.php');
             break;
+            //les pages sur les différents domaines
             case 'eco':
                 require('view/public/eco.php');
             break;
@@ -51,8 +58,24 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'li':
                 require('view/public/li.php');
             break;
-            case 'bord':
-                require('view/tableau_de_bord/acceuil.php');
+            case 'cal':
+                if(!empty($_GET['email']) && !empty($_GET['role'])){
+                    if($_GET['role']=='admin'){
+
+                    }else{
+                        $data= $homeController->load($_GET['email'],$_GET['role']);
+                        require('view/tableau_de_bord/calendar.php');
+                    }
+                   
+
+                }
+            break;
+            case 'dom':
+                if(!empty($_GET['id'])){
+                    $fieldController= new FieldController();
+                    $fieldController->getField($_GET['id']);
+                }
+
             break;
         }
 }
