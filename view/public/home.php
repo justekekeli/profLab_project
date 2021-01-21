@@ -13,7 +13,7 @@
 	<header id="head">
 		<div class="container">
 			<div class="row">
-				<h1 class="lead">LE MEILLEUR ENDROIT POUR S'AMELIORER</h1>
+				<h1 class="lead">LE MEILLEUR ENDROIT POUR S'AMELIORER </h1>
 				<p class="tagline">Inscrivez vous a l'application et profitez en ! </p>
 				
 			</div>

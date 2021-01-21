@@ -34,6 +34,9 @@
               </a>
             <ul class="sub">
             <?php
+                if($_SESSION['role']=='prof'){
+                  echo '<li><a href="index.php?action=courseAdd&amp;id='.$_SESSION['email'].'"> Ajouter un cours</a></li>';
+                }
                 foreach($_SESSION['mes_cours'] as $course){
                   echo '<li><a href="index.php?action=mes_cours&amp;id='.$course['id'].'">'.$course['title'].'</a></li>';
                 }

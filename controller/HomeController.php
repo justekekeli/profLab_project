@@ -71,8 +71,13 @@
             'borderColor'=> $colors[intval($row['daySeance'])],
             'textColor'=> $colors[intval($row['daySeance'])]
             );
-        }   
-        $datas=array($data,$courses);
+        }  
+        if(isset($data)) {
+            $datas=array($data,$courses);
+        }else{
+            $datas('',$courses);
+        }
+        
         return $datas;
     }
     public function signup($nom='',$prenom='',$email,$role,$pwd){

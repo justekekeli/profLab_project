@@ -21,13 +21,12 @@ class CourseClassDAO{
     }
     public function readByTitle(String $title){
         $result =null;
-        if(!empty($title)){
-            $sql = "SELECT * FROM `CourseClass` WHERE `title`=:title;";
-            $query = $this->connection->prepare($sql);
-            $query->bindValue(':title', $title, PDO::PARAM_STR);
-            $query->execute();
-            $result=$query->fetchAll(PDO::FETCH_ASSOC);
-        }
+        $sql = "SELECT * FROM `CourseClass` WHERE `title`=:title;";
+        $query = $this->connection->prepare($sql);
+        $query->bindValue(':title', $title, PDO::PARAM_STR);
+        $query->execute();
+        $result=$query->fetchAll(PDO::FETCH_ASSOC);
+        
 
         return $result;
     }

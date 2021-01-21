@@ -45,31 +45,44 @@
             <?php foreach($theCourse as $course){
               echo '<h3>'.$course['title'].'</h3>
               <p>'.$course['descriptionCourse'].'</p>';
+              if($_SESSION['email']==$course['prof_id'] && !$userCourse){
+                echo ' <br>
+                <p><a class="btn btn-theme bg-danger" href="index.php?action=suscribe&amp;course='.$course['id'].'&amp;student='.$_SESSION['email'].'"><i class="fa fa-book"></i> Participer au cours</a></p>';
+              }
+              if($userCourse){
+                echo ' <br>
+                <p><a class=" text-danger" href="'.$course['link'].'" target="_blank">Lien vers le cours</a></p>';
+
+              }
             }
             ?> 
             </div>
             <!-- BASIC FORM ELELEMNTS -->
-            <div class="row mt">
-              <div class="col-lg-12">
-                <div class="form-panel" style="box-shadow:none;">
-                  <form class="form-horizontal style-form" method="post"
-                  <?php foreach($theCourse as $course){
-                      echo 'action="index.php?addComment&amp;cs='.$_SESSION['email'].'&amp;id=
-                      '.$course['id'].'"';
-                    }
-                    ?> 
-                  >
-                    <div class="form-group">
-                      <div class="col-sm-10">
-                        <textarea class="form-control" placeholder="Votre commentaire..."></textarea>
+            <?php 
+            if($userCourse && $theCourse[0]['prof_id']!=$_SESSION['email']){
+                echo '<div class="row mt">
+                <div class="col-lg-12">
+                  <div class="form-panel" style="box-shadow:none;">
+                    <form class="form-horizontal style-form" method="post"';
+                     foreach($theCourse as $course){
+                        echo 'action="index.php?addComment&amp;cs='.$_SESSION['email'].'&amp;id=
+                        '.$course['id'].'" >';
+                      }
+                      echo '                 
+                      <div class="form-group">
+                        <div class="col-sm-10">
+                          <textarea name="content" class="form-control" placeholder="Votre commentaire..."></textarea>
+                        </div>
                       </div>
-                    </div>
-                    <button type="submit" class="btn btn-theme">Laisser un commentaire</button>
-                  </form>
+                      <button type="submit" class="btn btn-theme">Laisser un commentaire</button>
+                    </form>
+                  </div>
                 </div>
-              </div>
-              <!-- col-lg-12-->
-            </div>
+                <!-- col-lg-12-->
+              </div>';
+            }
+            
+            ?>
         </div>
           <!-- /row -->
       </div>

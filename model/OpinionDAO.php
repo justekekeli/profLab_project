@@ -15,7 +15,7 @@ class OpinionDAO {
 
     }
     public function readAll(String $email){
-        $sql = "SELECT * FROM `Opinion` WHERE `idProf`=:prof;";
+        $sql = "SELECT Opinion.*,App_User.firstname as firstN,App_User.lastname as lastN FROM `Opinion`,`App_User` WHERE `idProf`=:prof AND idReferent=App_User.email;";
         $query = $this->connection->prepare($sql);
         $query->bindValue(':prof', $email, PDO::PARAM_STR);
         $query->execute();

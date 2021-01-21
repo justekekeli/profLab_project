@@ -21,7 +21,7 @@ class CommentController{
         $newComment=array(
             'content'=>$content,
             'customer_id'=>$email,
-            'course_id'=>$coursId
+            'course_id'=>intval($coursId)
         );
         $this->comment->insert($newComment);
         require('../view/test.php'); 

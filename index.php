@@ -12,6 +12,7 @@ require('model/UserDAO.php');
 require('model/Student_CourseDAO.php');
 require('model/FieldDAO.php');
 require('model/CourseClassDAO.php');
+require('model/OpinionDAO.php');
 //création d'une instance de HomeController
 $homeController= new HomeController();
 //verification of url parameter
@@ -22,6 +23,11 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                 if(!empty($_POST['email'])&& !empty($_POST['pwd'])){
                     $homeController->authentificate($_POST['email'],md5($_POST['pwd']));
                 }
+            break;
+            //déconnexion
+            case 'logout': 
+                session_abort();
+                require('view/public/home.php');
             break;
             //si l'action est une inscription
             case 'signup':
@@ -73,9 +79,59 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'mes_cours':
                 if(!empty($_GET['id'])){
                     $courseController= new CourseController();
+                    $courseController->getCourse($_GET['id'],true);
+                }
+
+            break;
+            case 'course':
+                if(!empty($_GET['id'])){
+                    $courseController= new CourseController();
                     $courseController->getCourse($_GET['id']);
                 }
 
+            break;
+            case 'suscribe':
+                if(!empty($_GET['course']) && !empty($_GET['student']) ){
+                    $courseController= new CourseController();
+                    $courseController->subscribe($_GET['course'],$_GET['student']);
+                }
+
+            break;
+            case 'presentation':
+                if(!empty($_GET['id']) ){
+                    $userController= new UserController();
+                    $userController->getUser($_GET['id'],true);
+                }
+
+            break;
+            case 'addComment':
+                if(!empty($_GET['cs']) && !empty($_GET['id']) && !empty($_POST['content'])){
+                    $commentController= new CommentController();
+                    $commentController->addComment($_POST['content'],$_GET['cs'],$_GET['id']);
+                }
+
+            break;
+            case 'courseAdd':
+                if(!empty($_GET['id'])){
+                    $type='add';
+                    $fieldController=new FieldController();
+                    $listFields=$fieldController->getFields();
+                    require('view/tableau_de_bord/courseForm.php');
+                }
+
+            break;
+            case 'insertCourse':               
+                $courseController= new CourseController();
+                $courseController->addCourse(htmlspecialchars($_POST['title'])
+                ,htmlspecialchars($_POST['day'])
+                ,htmlspecialchars($_POST['start'])
+                ,htmlspecialchars($_POST['end'])
+                ,htmlspecialchars($_POST['prof'])
+                ,htmlspecialchars($_POST['classe'])
+                ,htmlspecialchars($_POST['field'])
+                ,htmlspecialchars($_POST['desc'])
+                ,htmlspecialchars($_POST['link'])
+            );
             break;
         }
 }

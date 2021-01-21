@@ -13,7 +13,7 @@ class FieldController{
     }
     public function getFields(){       
         $listFields=$this->field->readAll();
-        require('../view/test.php');
+        return $listFields;
 
     }
     public function getField($id){

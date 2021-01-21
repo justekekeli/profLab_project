@@ -55,7 +55,7 @@
                                     <div class="centered" style="margin-top:2rem;">
                                     <a  href="index.php?action=course&amp;id='.$course['id'].'">Plus d\'infos</a>
                                 </div>
-                               </div>';
+                               </div></div>';
 
                   }
               ?>

@@ -19,10 +19,26 @@ class UserController{
         require('../view/test.php');
 
     }
-    public function getUser($email){
-         $theUser = $this->user->readByEmail($email);
-         $listOpinions = $this->opinion->readAll($email);
-         require('../view/test.php');       
+    public function getUser($email,$presentation=false){
+        $theUser = $this->user->readByEmail($email);
+        $totalStudents=0;
+        $totalCourses=0;
+        if($presentation){
+            $courseDAO= new CourseDAO($this->conn);
+            $listCourses= $courseDAO->readByAttribute($email,"prof");
+            $listOpinions=$this->opinion->readAll($email);
+            foreach($listCourses as $c){
+              $nbr=  $courseDAO->nbreStudents($c['id']);
+              //total de tous les élèves du prof
+              $totalStudents+=$nbr[0]['countS'];;
+              $totalCourses ++;
+            }
+            require("view/tableau_de_bord/profPresentationPage.php");
+        }else{       
+            $listOpinions = $this->opinion->readAll($email);
+            require('../view/test.php');   
+        }
+    
     }
     public function addUser($email,$lastN,$firstN,$presentation,$role,$work,$pwd){
         $newUser = array(
