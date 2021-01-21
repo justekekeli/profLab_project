@@ -4,7 +4,9 @@ $_SESSION['nom']=$userInfos['nom'];
 $_SESSION['prenom']=$userInfos['prenom'];
 $_SESSION['email']=$userInfos['email'];
 $_SESSION['role']=$userInfos['role'];
+$_SESSION['pwd']=$userInfos['pwd'];
 $_SESSION['field']=$fields;
+$_SESSION['mes_cours']=$datas[1];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +72,7 @@ $(document).ready(function() {
     navLinks: true, // can click day/week names to navigate views
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
-    events: <?php echo json_encode($data)?>
+    events: <?php echo json_encode($datas[0])?>
     });
 
 calendar.render();

@@ -5,7 +5,7 @@
           <p class="centered"><a href=""><img src="view/tableau_de_bord/assets/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered"><?php if(!empty($_SESSION['prenom'] && !empty($_SESSION['nom']))){ echo $_SESSION['nom'].' '.$_SESSION['prenom'];}else{ echo $_SESSION['email'];}?></h5>
           <li class="mt">
-            <a id="a-home" onclick="active(this)" class="active" href="index.php?action=cal&amp;email=<?php echo $_SESSION['email']?>&amp;role=<?php echo $_SESSION['role']?>">
+            <a id="a-home" onclick="active(this)" class="active" href="index.php?action=cal&amp;m=<?php echo $_SESSION['email']?>&amp;p=<?php echo $_SESSION['pwd']?>">
               <i class="fa fa-dashboard"></i>
               <span>Tableau de bord</span>
               </a>
@@ -33,16 +33,11 @@
               <!--Ici c'est là que sera les cours dispenser pour les profs et les cours suivis par les étudiants-->
               </a>
             <ul class="sub">
-              <li><a href="">Cours_1</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-book"></i>
-              <span>Extra Pages</span>
-              </a>
-            <ul class="sub">
-              <li><a href="blank.html">Blank Page</a></li>
+            <?php
+                foreach($_SESSION['mes_cours'] as $course){
+                  echo '<li><a href="index.php?action=mes_cours&amp;id='.$course['id'].'">'.$course['title'].'</a></li>';
+                }
+            ?>
             </ul>
           </li>
           <li>

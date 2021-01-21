@@ -24,10 +24,10 @@
          $sql = "SELECT Course.*,CourseClass.title as classe,App_User.lastname as profL,App_User.firstname as profF FROM `Course`,`CourseClass`,`App_User` WHERE `field_id`=:val AND `prof_id`=App_User.email AND `class_id`=CourseClass.id;";
         }
         if($attribute=="prof"){
-         $sql = "SELECT * FROM `Course` WHERE `prof_id`=:val ;";
+         $sql = "SELECT Course.*,prof_id as email FROM `Course` WHERE `prof_id`=:val ;";
         }
         if($attribute=="student"){
-         $sql = "SELECT Course.* FROM `Course`,`Student_Course` WHERE `idStudent`=:val AND `idCourse`=`Course.id`;";
+         $sql = "SELECT Course.*,Student_Course.idStudent as email,`start`,`end` FROM `Course`,`Student_Course` WHERE `idStudent`=:val AND `idCourse`=`Course.id`;";
         }
         $query = $this->connection->prepare($sql);
         $query->bindValue(':val', $val, PDO::PARAM_INT);

@@ -4,6 +4,14 @@ class Student_CourseDAO {
     function __construct($connection){
         $this->connection=$connection;
     }
+    public function count($id){
+        $sql = "SELECT COUNT(idStudent) as countS FROM `Student_Course` WHERE `idCourse`=:id ;";
+        $query = $this->connection->prepare($sql);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $result=$query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function insert($array){
         $sql = "INSERT INTO `Student_Course`(`idCourse`, `idStudent`, `start`) VALUES(:course,:student,curdate());";
         $query = $this->connection->prepare($sql);
@@ -13,17 +21,16 @@ class Student_CourseDAO {
 
     }
     public function readById(int $value){
-        $result=null;
-        if(!empty($value)){
+
             $sql = "SELECT * FROM `Student_Course` WHERE `id`=:id ;";
             $query = $this->connection->prepare($sql);
             $query->bindValue(':id', $value, PDO::PARAM_INT);
             $query->execute();
             $result=$query->fetchAll(PDO::FETCH_ASSOC);
-        }
+        
         return $result;
     }
-    public function readByStudent(String $value){
+  /*  public function readByStudent(String $value){
             $sql = "SELECT Course.*,`start`,`end` FROM `Student_Course`,`Course` WHERE `idStudent`=:id AND Course.id=idCourse ;";
             $query = $this->connection->prepare($sql);
             $query->bindValue(':id', $value, PDO::PARAM_STR);
@@ -31,7 +38,7 @@ class Student_CourseDAO {
             $result=$query->fetchAll(PDO::FETCH_ASSOC);
         
         return $result;
-    }
+    }*/
     public function readByCourse(int $value){
         $result=null;
         if(!empty($value)){

@@ -20,7 +20,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             //si l'action est une demande de connection
             case 'auth': 
                 if(!empty($_POST['email'])&& !empty($_POST['pwd'])){
-                    $homeController->authentificate($_POST['email'],$_POST['pwd']);
+                    $homeController->authentificate($_POST['email'],md5($_POST['pwd']));
                 }
             break;
             //si l'action est une inscription
@@ -58,22 +58,22 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'li':
                 require('view/public/li.php');
             break;
-            case 'cal':
-                if(!empty($_GET['email']) && !empty($_GET['role'])){
-                    if($_GET['role']=='admin'){
-
-                    }else{
-                        $data= $homeController->load($_GET['email'],$_GET['role']);
-                        require('view/tableau_de_bord/calendar.php');
-                    }
-                   
-
+            case 'cal': 
+                if(!empty($_GET['m'])&& !empty($_GET['p'])){
+                    $homeController->authentificate($_GET['m'],$_GET['p']);
                 }
             break;
             case 'dom':
                 if(!empty($_GET['id'])){
                     $fieldController= new FieldController();
                     $fieldController->getField($_GET['id']);
+                }
+
+            break;
+            case 'mes_cours':
+                if(!empty($_GET['id'])){
+                    $courseController= new CourseController();
+                    $courseController->getCourse($_GET['id']);
                 }
 
             break;

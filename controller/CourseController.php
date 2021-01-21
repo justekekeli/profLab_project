@@ -25,11 +25,16 @@ class CourseController{
 
     }
     public function getCourse($id){
-        $theCourse=null;
-        if(is_int($id)){
-            $theCourse = $this->course->readById($id);
-        }
-         require('../view/test.php');       
+            
+        $theCourse = $this->course->readById(intval($id));
+        $commentDAO= new CommentDAO($this->conn);
+        $listComments= $commentDAO->readAll(intval($id));
+        $crsDAO= new Student_CourseDAO($this->conn);
+        $nbr= $crsDAO->count(intval($id));
+        $nbrStudents = $nbr['countS'];
+        $listComments= $commentDAO->readAll(intval($id));
+        $days=array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
+        require('view/tableau_de_bord/theCourse.php');       
     }
     public function addCourse($title,$price,$seanceTime,$prof,$class,$fieldId,$desc){
         $classDao = new CourseClassDAO($this->conn);

@@ -15,11 +15,12 @@
     }
     public  function authentificate($email,$pwd){
         if(!empty($email) && !empty($pwd)){
-            $finded= $this->user->search($email,md5($pwd));
+            $finded= $this->user->search($email,$pwd);
             if(!empty($finded)){
                 $message="Connexion réussie.";
                 //domaines disponibles dans l'application
                 $field= new FieldDAO($this->conn);
+                $fields=$field->readAll();
                 $fields=$field->readAll();;
                 //récupération des données de l'utilisateur connecté
                 $userInfos=array();
@@ -27,12 +28,13 @@
                     $userInfos['nom']=$connected['lastname'];
                     $userInfos['prenom']=$connected['firstname'];
                     $userInfos['email']=$connected['email'];
+                    $userInfos['pwd']=$connected['pwd'];
                     $userInfos['role']=$connected['roleUser'];
                 }
                 if($userInfos['role']=='admin'){
                     require('view/tableau_de_bord/acceuil.php');
                 }else{   
-                    $data = $this->load($userInfos['email'],$userInfos['role']);       
+                    $datas = $this->load($userInfos['email'],$userInfos['role']);       
                     require('view/tableau_de_bord/calendar.php');
                 }
                 
@@ -49,8 +51,8 @@
     }
     public function load($email,$role){
         if($role=='student'){
-            $courseDao= new Student_CourseDAO($this->conn);
-            $courses= $courseDao->readByStudent($email);
+            $courseDao= new CourseDAO($this->conn);
+            $courses= $courseDao->readByAttribute($email,"student");
         }
         if($role=='prof'){
             $courseDao= new CourseDAO($this->conn);
@@ -70,8 +72,8 @@
             'textColor'=> $colors[intval($row['daySeance'])]
             );
         }   
-
-        return $data;
+        $datas=array($data,$courses);
+        return $datas;
     }
     public function signup($nom='',$prenom='',$email,$role,$pwd){
         if(!empty($email)&& !empty($role) && !empty($pwd) && !empty($nom) && !empty($prenom)){

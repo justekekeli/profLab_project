@@ -14,7 +14,7 @@ class CommentDAO{
 
     }
     public function readAll(int $id){
-        $sql = "SELECT * FROM `CommentCourse` WHERE course_id=:id;";
+        $sql = "SELECT CommentCourse.*,App_User.firstname as firstN,App_User.lastname as lastN,App_User.email as email FROM `CommentCourse`,`App_User` WHERE course_id=:id AND customer_id=App_User.email;";
         $query = $this->connection->prepare($sql);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();

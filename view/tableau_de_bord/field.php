@@ -4,7 +4,6 @@
 
 <head>
 <?php include('layout2/head.php');?>
-<link href="lib/fullcalendar/main.css" rel="stylesheet" />
 </head>
 <body>
   <section id="container">
