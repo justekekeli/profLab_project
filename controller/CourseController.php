@@ -37,6 +37,13 @@ class CourseController{
         $days=array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
         require('view/tableau_de_bord/theCourse.php');       
     }
+    public function updateForm($id){
+        $type='update';
+        $theCourse = $this->course->readById(intval($id));
+        $fieldController=new FieldController();
+        $listFields=$fieldController->getFields();
+        require('view/tableau_de_bord/courseForm.php');
+    }
     public function addCourse($title,$day,$seanceS,$seanceE,$prof,$classe,$fieldId,$desc,$link,$p){
         $findedClass = $this->courseClass->readByTitle($classe);
         if(!empty($findedClass)){
@@ -53,8 +60,8 @@ class CourseController{
         $newCourse = array(
             'title'=>$title,
             'day'=>$day,
-            'start'=>$seanceS.":00",
-            'end'=>$seanceE.":00",
+            'start'=>$seanceS,
+            'end'=>$seanceE,
             'prof'=>$prof,
             'class_id' =>$class_id,
             'field_id'=>$fieldId,
@@ -65,23 +72,38 @@ class CourseController{
         $message = $this->course->insert($newCourse);
        header('Location:index.php?action=cal&m='.$prof.'&p='. $p); 
     }
-    public function updateCourse($title,$price,$seanceTime,$prof,$class_id,$fieldId,$desc,$id){
+    public function updateCourse($title,$day,$seanceS,$seanceE,$prof,$classe,$fieldId,$desc,$link,$p,$id){
+        $findedClass = $this->courseClass->readByTitle($classe);
+        if(!empty($findedClass)){
+            foreach($findedClass as $f){
+                $class_id=$f['id'];
+            }
+        }else{
+            $this->courseClass->insert($classe);
+            $findedClass = $this->courseClass->readByTitle($classe);
+            foreach($findedClass as $f){
+                $class_id=$f['id'];
+            }
+        }
         $updatedCourse = array(
             'id'=>$id,
             'title'=>$title,
-            'price'=>$price,
-            'seanceTime'=>$seanceTime,
+            'day'=>$day,
+            'start'=>$seanceS,
+            'end'=>$seanceE,
             'prof'=>$prof,
             'class_id' =>$class_id,
             'field_id'=>$fieldId,
-            'desc'=>$desc
+            'desc'=>$desc,
+            'link'=>$link
         );
-        
+     //   print_r($updatedCourse);
         $this->course->update($updatedCourse);
-        require('../view/test.php'); 
+        header('Location:index.php?action=cal&m='.$prof.'&p='. $p); 
     }
-   public function deleteCourse($id){
+   public function deleteCourse($id,$prof,$p){
        $this->course->blocked(1,$id);
+       header('Location:index.php?action=cal&m='.$prof.'&p='. $p); 
    }
    public function subscribe($course,$student){
         $crsDAO= new Student_CourseDAO($this->conn);

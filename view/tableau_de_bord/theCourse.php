@@ -49,6 +49,13 @@
                 echo ' <br>
                 <p><a class="btn btn-theme bg-danger" href="index.php?action=suscribe&amp;course='.$course['id'].'&amp;student='.$_SESSION['email'].'&amp;p='.$_SESSION['pwd'].'"><i class="fa fa-book"></i> Participer au cours</a></p>';
               }
+              if($_SESSION['email']==$course['prof_id']){
+                echo ' <br>
+                <p><a class="btn btn-theme " href="index.php?action=updateCourseForm&amp;id='.$course['id'].'"><i class="fa fa-book"></i> Modifier le cours</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn" style="background:red;color:white" href="index.php?action=deleteCourse&amp;id='.$course['id'].'&amp;prof='.$_SESSION['email'].'&amp;p='.$_SESSION['pwd'].'"><i class="fa fa-trash"></i> Supprimer le cours</a>
+                </p>';
+
+              }
               if($userCourse){
                 echo ' <br>
                 <p><a class=" text-danger" href="'.$course['link'].'" target="_blank">Lien vers le cours</a></p>';

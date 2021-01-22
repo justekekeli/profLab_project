@@ -30,13 +30,13 @@
         <div class="row mt">
           <div class="col-lg-8 col-lg-offset-2 detailed mt">
             
-            <form role="form" class="form-horizontal text-center" method="post" action=<?php if($type=='add'){echo 'index.php?action=insertCourse';}else{echo 'index.php?action=updateCourse';}?>>
-            <input name="prof" type="hidden" value=<?php echo $_GET['id']?>>
+            <form role="form" class="form-horizontal text-center" method="post" action=<?php if($type=='add'){echo 'index.php?action=insertCourse';}else{echo 'index.php?action=updateCourse&amp;id='.$theCourse[0]['id'];}?>>
+            <input name="prof" type="hidden" value=<?php echo $_SESSION['email']?>>
             <input name="p" type="hidden" value=<?php echo $_SESSION['pwd']?>>
               <div class="form-group">
                 <label class="col-lg-4 control-label">Titre</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="addr1" class="form-control" name="title" required>
+                  <input type="text" placeholder=" " id="addr1" class="form-control"  name="title" value="<?php if(isset($theCourse[0]['title'])){ echo $theCourse[0]['title'];} ?>" required>
                 </div>
               </div>
               <div class="form-group">
@@ -71,31 +71,31 @@
               <div class="form-group">
                 <label class="col-lg-4 control-label">Début du cours </label>
                 <div class="col-lg-6">
-                  <input type="time" placeholder=" " name="start" class="form-control" required>
+                  <input type="time" placeholder=" " name="start" class="form-control"  value="<?php if(isset($theCourse[0]['seanceStart'])){ echo $theCourse[0]['seanceStart'];}else{ echo '00:00:00';} ?>" required>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-4 control-label">Fin du cours </label>
                 <div class="col-lg-6">
-                  <input type="time" placeholder=" " name="end" class="form-control" required>
+                  <input type="time" placeholder=" " name="end"  value="<?php if(isset($theCourse[0]['seanceEnd'])){ echo $theCourse[0]['seanceEnd'];}else{ echo '00:00:00';} ?>" class="form-control" required>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-4 control-label">Niveau ou classe</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " name="classe" class="form-control" required>
+                  <input type="text" placeholder=" " name="classe" class="form-control"  value="<?php if(isset($theCourse[0]['classe'])){ echo $theCourse[0]['classe'];} ?>" required>
                 </div>
               </div>  
               <div class="form-group">           
                 <label class="col-lg-4 control-label">Lien pour le cours</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " name="link" class="form-control" required>
+                  <input type="text" placeholder=" " name="link" class="form-control"  value="<?php if(isset($theCourse[0]['link'])){ echo $theCourse[0]['link'];} ?>" required>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-4 control-label">Description du cours</label>
                 <div class="col-lg-10">
-                  <textarea rows="4" cols="30" class="form-control" id="" name="desc"></textarea>
+                  <textarea rows="4" cols="30" class="form-control" id="" name="desc"  value=""><?php if(isset($theCourse[0]['descriptionCourse'])){ echo $theCourse[0]['descriptionCourse'];} ?></textarea>
                 </div>
               </div>
               <div class="form-group">

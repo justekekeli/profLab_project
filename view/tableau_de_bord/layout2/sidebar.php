@@ -45,26 +45,28 @@
               ?>
             </ul>
           </li>
-          
-          <li class="sub-menu">
+          <?php
+          if($_SESSION['role']!='admin'){
+         echo ' <li class="sub-menu">
             <a id="a-crs" onclick="active(this)" href="javascript:;">
               <i class="fa fa-cogs"></i>
               <span>Mes cours</span>
-              <!--Ici c'est là que sera les cours dispenser pour les profs et les cours suivis par les étudiants-->
+              <!--Ici c\'est là que sera les cours dispenser pour les profs et les cours suivis par les étudiants-->
               </a>
-            <ul class="sub">
-            <?php
-              if($_SESSION['role']!='admin'){
+            <ul class="sub">';
                 if($_SESSION['role']=='prof'){
                   echo '<li><a href="index.php?action=courseAdd&amp;id='.$_SESSION['email'].'"> Ajouter un cours</a></li>';
                 }
                 foreach($_SESSION['mes_cours'] as $course){
+                  if($course['blocked']!=1){
                   echo '<li><a href="index.php?action=mes_cours&amp;id='.$course['id'].'">'.$course['title'].'</a></li>';
                 }
               }
-            ?>
+           echo '
             </ul>
-          </li>
+          </li>';
+          }
+          ?>
           <li>
             <a id="a-mail" onclick="active(this)" href="inbox.html">
               <i class="fa fa-envelope"></i>

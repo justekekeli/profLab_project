@@ -140,6 +140,35 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                 ,htmlspecialchars($_POST['p'])
             );
             break;
+            case 'updateCourseForm':               
+                if(!empty($_GET['id'])){
+                    $courseController= new CourseController();
+                    $courseController->updateForm(htmlspecialchars($_GET['id']));
+
+                }
+            break;
+            case 'updateCourse':               
+                $courseController= new CourseController();
+                $courseController->updateCourse(htmlspecialchars($_POST['title'])
+                ,htmlspecialchars($_POST['day'])
+                ,htmlspecialchars($_POST['start'])
+                ,htmlspecialchars($_POST['end'])
+                ,htmlspecialchars($_POST['prof'])
+                ,htmlspecialchars($_POST['classe'])
+                ,htmlspecialchars($_POST['field'])
+                ,htmlspecialchars($_POST['desc'])
+                ,htmlspecialchars($_POST['link'])
+                ,htmlspecialchars($_POST['p'])
+                ,htmlspecialchars($_GET['id'])
+            );
+            break;
+            case 'deleteCourse':
+                if(!empty($_GET['id']) && !empty($_GET['prof']) && !empty($_GET['p'])){
+                    $courseController= new CourseController();
+                    $courseController->deleteCourse($_GET['id'],$_GET['prof'],$_GET['p']);
+                }
+
+            break;
         }
 }
 else{

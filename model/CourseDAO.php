@@ -20,7 +20,7 @@
         return "Le cours a été bien ajouté";
      }
      public function readById($id){
-      $sql = "SELECT Course.* FROM `Course` WHERE `id`=:id";
+      $sql = "SELECT Course.*,CourseClass.title as classe FROM `Course`,`CourseClass` WHERE Course.id=:id AND class_id=CourseClass.id";
       $query = $this->connection->prepare($sql);
       $query->bindValue(':id', $id, PDO::PARAM_INT);
       $query->execute();
@@ -67,18 +67,19 @@
       }*/
       
      public function update($array){
-        $sql="UPDATE `Course` SET `title`=:title,`daySeance`=:daySeance],`seanceStart`=:seanceS,`seanceEnd`=:seanceEnd,`prof_id`=:prof,`class_id`=:class_id,`field_id`=:field_id,`descriptionCourse`=:descriptionCrs,`link`=:link WHERE `id`=:id;";
+        $sql="UPDATE `Course` SET `title`=:title,`daySeance`=:daySeance,`seanceStart`=:seanceS,`seanceEnd`=:seanceEnd,`prof_id`=:prof,`class_id`=:class_id,`field_id`=:field_id,`descriptionCourse`=:descriptionCrs,`link`=:link WHERE `id`=:id;";
         $query = $this->connection->prepare($sql);
         $query->bindValue(':id', $array['id'], PDO::PARAM_INT);
         $query->bindValue(':title',$array['title'], PDO::PARAM_STR);
         $query->bindValue(':daySeance',$array['day'], PDO::PARAM_STR);
         $query->bindValue(':seanceS', $array['start'], PDO::PARAM_STR);
-        $query->bindValue(':seanceE', $array['end'], PDO::PARAM_STR);
+        $query->bindValue(':seanceEnd', $array['end'], PDO::PARAM_STR);
         $query->bindValue(':prof', $array['prof'], PDO::PARAM_STR);
         $query->bindValue(':class_id',$array['class_id'], PDO::PARAM_INT);
         $query->bindValue(':field_id', $array['field_id'], PDO::PARAM_INT);
         $query->bindValue(':descriptionCrs', $array['desc'], PDO::PARAM_STR);
         $query->bindValue(':link', $array['link'], PDO::PARAM_STR);
+       
         $query->execute();
         return "La modification a été un succès";
      }
@@ -86,13 +87,13 @@
       $sql="UPDATE `Course` SET `blocked`=:b WHERE `id`=:id;";
       $query = $this->connection->prepare($sql);
       $query->bindValue(':id',$id, PDO::PARAM_INT);
-      $query->bindValue(':blocked', $b, PDO::PARAM_INT);
+      $query->bindValue(':b', $b, PDO::PARAM_INT);
       $query->execute();
      }
      public function delete($id){
         $sql = "DELETE FROM `Course` WHERE `id`=:id;";
         $query = $this->connection->prepare($sql);
-        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         return "Suppression effectuée";
      }

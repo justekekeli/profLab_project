@@ -61,17 +61,19 @@
         }
         $colors =array('blue','brown','red','green','orange','purple','gray');
         foreach($courses as $row)
-        {
+        { if($row['blocked']!=1){
             $data[] = array(
-            'grouId'   => $row["id"],
-            'title'   => $row["title"],
-            'daysOfWeek'=>[$row['daySeance']],
-            'startTime'   => $row["seanceStart"],
-            'endTime'   => $row["seanceEnd"],
-            'color'=>'white',
-            'borderColor'=> $colors[intval($row['daySeance'])],
-            'textColor'=> $colors[intval($row['daySeance'])]
-            );
+                'grouId'   => $row["id"],
+                'title'   => $row["title"],
+                'daysOfWeek'=>[$row['daySeance']],
+                'startTime'   => $row["seanceStart"],
+                'endTime'   => $row["seanceEnd"],
+                'color'=>'white',
+                'borderColor'=> $colors[intval($row['daySeance'])],
+                'textColor'=> $colors[intval($row['daySeance'])]
+                );
+        }
+            
         }  
         if(isset($data)) {
             $datas=array($data,$courses);
