@@ -212,6 +212,14 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                 $fieldController=new FieldController();
                 $fieldController->addField(htmlspecialchars($_POST['title']),$_POST['m'],$_POST['p']);
             break;
+            case 'avis':
+                $userController= new UserController();
+                $userController->giveOpinion(
+                 htmlspecialchars($_GET['ref'])
+                ,htmlspecialchars($_GET['prof'])
+                ,htmlspecialchars($_POST['avis'])
+                );
+            break;
         }
 }
 else{

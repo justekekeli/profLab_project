@@ -96,19 +96,7 @@ class UserController{
         $this->user->update($updatedUser);
         header('Location:index.php?action=profil&email='.$newEmail.'&role='.$role); 
     }
-    public function giveOpinion($emailReferent,$prof,$lastN,$firstN,$role,$work,$opinionMessage){
-        $referent = $this->user->readByEmail($email);
-        if(empty($referent)){
-            $newReferent=array(
-                'email'=>$emailReferent,
-                'lastname'=>$lastN,
-                'firstname'=>$firstN,
-                'roleUser' =>$role,
-                'work'=>$work,
-                'pwd'=>''
-            );
-            $this->user->insert($newReferent);
-        }
+    public function giveOpinion($emailReferent,$prof,$opinionMessage){
         $newOpinion =array(
             'content'=>$opinionMessage,
             'prof'=>$prof,
@@ -116,7 +104,8 @@ class UserController{
         );
         $this->opinion->insert($newOpinion);
         $message='Votre opinion a été ajouté';
-        require('../view/test.php'); 
+       // var_dump($newOpinion);
+       header('Location:index.php?action=presentation&id='.$prof); 
     }
     public function block($email,$blocked){
         $this->user->updateBlocked($email,$blocked);

@@ -61,6 +61,7 @@
 
     }
     public function load($email,$role){
+        $courses=array();
         if($role=='student'){
             $courseDao= new CourseDAO($this->conn);
             $courses= $courseDao->readByAttribute($email,"student");
