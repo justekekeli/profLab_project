@@ -72,7 +72,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'profil':
                 if(!empty($_GET['email'])&& !empty($_GET['role'])){
                 $userController= new UserController();
-                $userController->getUser($_GET['email'],$_GET['role']);
+                $userController->getUser($_GET['email'],$_GET['role'],0,false);
                 }
             break;
             case 'dom':
@@ -106,7 +106,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'presentation':
                 if(!empty($_GET['id']) ){
                     $userController= new UserController();
-                    $userController->getUser($_GET['id'],true);
+                    $userController->getUser($_GET['id'],"",0,true);
                 }
 
             break;

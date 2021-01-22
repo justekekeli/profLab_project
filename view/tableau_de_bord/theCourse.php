@@ -45,7 +45,7 @@
             <?php foreach($theCourse as $course){
               echo '<h3>'.$course['title'].'</h3>
               <p>'.$course['descriptionCourse'].'</p>';
-              if($_SESSION['email']==$course['prof_id'] && !$userCourse){
+              if($_SESSION['email']!=$course['prof_id'] && !$userCourse){
                 echo ' <br>
                 <p><a class="btn btn-theme bg-danger" href="index.php?action=suscribe&amp;course='.$course['id'].'&amp;student='.$_SESSION['email'].'&amp;p='.$_SESSION['pwd'].'"><i class="fa fa-book"></i> Participer au cours</a></p>';
               }

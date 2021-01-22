@@ -101,7 +101,7 @@ function validateForm() {
                             <div class="col-lg-6">
                               <select name="role" class="form-control" size=1 <?php if($ad==1){ echo 'disabled';}?>>
                                 <option value="prof" <?php if($theUser[0]['roleUser']=='prof'){echo 'selected';} ?>>Professeur</option>
-                                <option value="student" <?php if($theUser[0]['roleUser']=='student'){echo 'selected';} ?>>Etudiant</option>
+                                <option value="student" <?php if($theUser[0]['roleUser']=='student'){echo 'selected';} ?>>Elève</option>
                                 <?php if($theUser[0]['roleUser']=='admin'){echo ' <option value="admin" selected>Admin</option>';} ?>
                               </select>
                             </div>

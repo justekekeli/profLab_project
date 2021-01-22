@@ -61,10 +61,11 @@
                 if($_SESSION['role']=='prof'){
                   echo '<li><a href="index.php?action=courseAdd&amp;id='.$_SESSION['email'].'"> Ajouter un cours</a></li>';
                 }
+                if(!empty($_SESSION['mes_cours'])){
                 foreach($_SESSION['mes_cours'] as $course){
                   if($course['blocked']!=1){
                   echo '<li><a href="index.php?action=mes_cours&amp;id='.$course['id'].'">'.$course['title'].'</a></li>';
-                }
+                }}
               }
            echo '
             </ul>

@@ -36,26 +36,28 @@ class UserController{
             $listCourses= $courseDAO->readByAttribute($email,"prof");
         }
        
-        $listOpinions=$this->opinion->readAll($email);
-        if(!empty($listCourses)){
-            foreach($listCourses as $c){
-                if($role='prof'){
-                    if($c['blocked']!=1){
-                        $nbr=  $courseDAO->nbreStudents($c['id']);
-                    }
-                    
-                }else if ($role=='student'){
-                    $sc= new Student_CourseDAO($this->conn);
-                    $nbr=$sc->countCourses($email);
+            $listOpinions=$this->opinion->readAll($email);
+                if(!empty($listCourses)){
+                foreach($listCourses as $c){
+                    if($role='prof'){
+                        if($c['blocked']!=1){
+                            $nbr=  $courseDAO->nbreStudents($c['id']);
+                        }
+                        
+                    }else if ($role=='student'){
+                        $sc= new Student_CourseDAO($this->conn);
+                        $nbr=$sc->countCourses($email);
 
-                }
+                    }
                 
                 //total de tous les élèves du prof
                 $totalStudents+=$nbr[0]['countS'];
                 if($c['blocked']!=1){
-                $totalCourses ++;}
+                         $totalCourses ++;
+                }
               }
-        }
+             }
+        
         if($presentation){
 
             require("view/tableau_de_bord/profPresentationPage.php");

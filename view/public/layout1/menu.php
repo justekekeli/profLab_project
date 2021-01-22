@@ -19,7 +19,7 @@
 						</ul>
 					</li>
 					<li><a href="index.php?action=contact">Contact</a></li>
-					<li><a class="btn" href="index.php?action=signupForm">SIGN IN / SIGN UP</a></li>
+					<li><a class="btn" href="index.php?action=signupForm">SE CONNECTER/ S'INSCRIRE</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>

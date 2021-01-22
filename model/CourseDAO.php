@@ -46,7 +46,12 @@
          $sql = "SELECT Course.*,Student_Course.idStudent as email,`start`,`end` FROM `Course`,`Student_Course` WHERE `idStudent`=:val AND `idCourse`=Course.id;";
         }
         $query = $this->connection->prepare($sql);
-        $query->bindValue(':val', $val, PDO::PARAM_INT);
+        if($attribute=='field'){
+         $query->bindValue(':val', $val, PDO::PARAM_INT);
+        }else{
+         $query->bindValue(':val', $val, PDO::PARAM_STR);
+        }
+        
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_ASSOC);

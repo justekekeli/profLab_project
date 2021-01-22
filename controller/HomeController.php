@@ -36,7 +36,7 @@
                         $userInfos['role']=$connected['roleUser'];
                     }
                     if($userInfos['role']=='admin'){
-                        $datas=array('');
+                        $datas=array('','');
                         $totalProfs=$this->user->countProf();
                         $totalStudents=$this->user->countStudents();
                         $courseDao =new CourseDAO($this->conn);
@@ -109,9 +109,17 @@
                     'pwd'=>md5($pwd)
                 );
                 $message = $this->user->insert($newUser);
+                $finded= $this->user->readByEmail($email);
+                foreach($finded as $connected){
+                    $userInfos['nom']=$connected['lastname'];
+                    $userInfos['prenom']=$connected['firstname'];
+                    $userInfos['email']=$connected['email'];
+                    $userInfos['pwd']=$connected['pwd'];
+                    $userInfos['role']=$connected['roleUser'];
+                }
                 $field= new FieldDAO($this->conn);
                 $fields=$field->readAll();
-                $datas=array('');
+                $datas=array('','');
                 require('view/tableau_de_bord/calendar.php'); 
             }
            
