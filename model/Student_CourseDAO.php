@@ -12,6 +12,14 @@ class Student_CourseDAO {
         $result=$query->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function countCourses($id){
+        $sql = "SELECT COUNT(idCourse) as countS FROM `Student_Course` WHERE `idStudent`=:id ;";
+        $query = $this->connection->prepare($sql);
+        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->execute();
+        $result=$query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function insert($array){
         $sql = "INSERT INTO `Student_Course`(`idCourse`, `idStudent`, `start`) VALUES(:course,:student,curdate());";
         $query = $this->connection->prepare($sql);

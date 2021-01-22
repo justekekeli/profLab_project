@@ -19,6 +19,13 @@
         $query->execute();
         return "Le cours a été bien ajouté";
      }
+     public function countCourses(){
+      $sql = "SELECT COUNT(*) as countC FROM `Course` WHERE blocked=0;";
+      $query = $this->connection->prepare($sql);
+      $query->execute();    
+
+     return $query->fetchAll(PDO::FETCH_ASSOC);
+     }
      public function readById($id){
       $sql = "SELECT Course.*,CourseClass.title as classe FROM `Course`,`CourseClass` WHERE Course.id=:id AND class_id=CourseClass.id";
       $query = $this->connection->prepare($sql);

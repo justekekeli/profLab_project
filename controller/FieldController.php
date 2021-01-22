@@ -20,6 +20,7 @@ class FieldController{
          $theField = $this->field->readById($id);
          $course = new CourseDAO($this->conn);
          $courses = $course->readByAttribute(intval($id),"field");
+         $listCourses=array();
          foreach($courses as $c){
              if($c['blocked']!=1){
                  $listCourses[]=$c;
@@ -27,16 +28,17 @@ class FieldController{
          }
          require('view/tableau_de_bord/field.php');     
     }
-    public function addField($title){
+    public function addField($title,$m,$p){
+        
         $message = $this->field->insert($title);
-        require('../view/test.php'); 
+       header('Location:index.php?action=cal&m='.$m.'&p='. $p); 
     }
-    public function updateField(int $id,String $title){
+  /*  public function updateField(int $id,String $title){
         $this->field->update($id,$title);
         require('../view/test.php'); 
     }
     public function deleteField(int $id){
         $this->field->delete($id);
-    }
+    }*/
  
 }

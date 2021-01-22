@@ -37,7 +37,11 @@
             <ul class="sub">
               <!--j'ai nommé les interfaces connecter blank-Name qui correspondrons chacuns a Name domaines-->
               <!--utilise blank.html pour faire les interfaces la , il suffira de remplir la "section juste avant le footer pour te faciliter la tâche"-->
-             <?php if(isset($_SESSION['field'])){
+             <?php 
+                 if($_SESSION['role']=='admin'){
+                  echo '<li><a href="index.php?action=fieldAdd"> Ajouter un domaine</a></li>';
+                }
+             if(isset($_SESSION['field'])){
                       foreach($_SESSION['field'] as $field){
                         echo '<li><a href="index.php?action=dom&amp;id='.$field['id'].'">'.$field['title'].'</a></li>';
                       }

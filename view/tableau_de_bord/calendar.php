@@ -65,7 +65,7 @@ if(isset($datas[1])){
                       <h5>Professeurs</h5>
                     </div>
                     <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
-                    <p style="font-weight:bold;color:white">200  </p>
+                    <p style="font-weight:bold;color:white">'.$totalProfs[0]['countP'].'</p>
                   </div>
                   <!--  /darkblue panel -->
                 </div>
@@ -76,7 +76,7 @@ if(isset($datas[1])){
                       <h5>Étudiants</h5>
                     </div>
                     <h1 class="mt"><i class="fa fa-users fa-3x"></i></h1>
-                    <p style="font-weight:bold;">200  </p>
+                    <p style="font-weight:bold;">'.$totalStudents[0]['countS'].'</p>
                   </div>
                   <!--  /darkblue panel -->
                 </div>
@@ -87,7 +87,7 @@ if(isset($datas[1])){
                       <h5>Cours</h5>
                     </div>
                     <h1 class="mt"><i class="fa fa-cogs fa-3x"></i></h1>
-                    <p style="font-weight:bold;">200  </p>
+                    <p style="font-weight:bold;">'.$totalCourses[0]['countC'].'</p>
                   </div>
                   <!--  /darkblue panel -->
                 </div>
@@ -98,7 +98,7 @@ if(isset($datas[1])){
                       <h5>Domaines</h5>
                     </div>
                     <h1 class="mt"><i class="fa fa-desktop fa-3x"></i></h1>
-                    <p style="font-weight:bold;color:white">200  </p>
+                    <p style="font-weight:bold;color:white">'.count($fields).'</p>
                   </div>
                   <!--  /darkblue panel -->
                 </div>

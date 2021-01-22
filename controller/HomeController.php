@@ -16,27 +16,37 @@
     public  function authentificate($email,$pwd){
         if(!empty($email) && !empty($pwd)){
             $finded= $this->user->search($email,$pwd);
+
             if(!empty($finded)){
-                $message="Connexion réussie.";
-                //domaines disponibles dans l'application
-                $field= new FieldDAO($this->conn);
-                $fields=$field->readAll();
-                $fields=$field->readAll();;
-                //récupération des données de l'utilisateur connecté
-                $userInfos=array();
-                foreach($finded as $connected){
-                    $userInfos['nom']=$connected['lastname'];
-                    $userInfos['prenom']=$connected['firstname'];
-                    $userInfos['email']=$connected['email'];
-                    $userInfos['pwd']=$connected['pwd'];
-                    $userInfos['role']=$connected['roleUser'];
-                }
-                if($userInfos['role']=='admin'){
-                    $datas=array('');
-                    require('view/tableau_de_bord/calendar.php');
-                }else{   
-                    $datas = $this->load($userInfos['email'],$userInfos['role']);       
-                    require('view/tableau_de_bord/calendar.php');
+                if($finded[0]['blocked']==1){
+                    $message="Vous avez été bloqué.";
+                    require('view/public/signin.php');
+                }else{
+                    $message="Connexion réussie.";
+                    //domaines disponibles dans l'application
+                    $field= new FieldDAO($this->conn);
+                    $fields=$field->readAll();
+                    //récupération des données de l'utilisateur connecté
+                    $userInfos=array();
+                    foreach($finded as $connected){
+                        $userInfos['nom']=$connected['lastname'];
+                        $userInfos['prenom']=$connected['firstname'];
+                        $userInfos['email']=$connected['email'];
+                        $userInfos['pwd']=$connected['pwd'];
+                        $userInfos['role']=$connected['roleUser'];
+                    }
+                    if($userInfos['role']=='admin'){
+                        $datas=array('');
+                        $totalProfs=$this->user->countProf();
+                        $totalStudents=$this->user->countStudents();
+                        $courseDao =new CourseDAO($this->conn);
+                        $totalCourses=$courseDao->countCourses();
+                        require('view/tableau_de_bord/calendar.php');
+                    }else{   
+                        $datas = $this->load($userInfos['email'],$userInfos['role']);       
+                        require('view/tableau_de_bord/calendar.php');
+                    }
+
                 }
                 
             }else{
@@ -99,6 +109,9 @@
                     'pwd'=>md5($pwd)
                 );
                 $message = $this->user->insert($newUser);
+                $field= new FieldDAO($this->conn);
+                $fields=$field->readAll();
+                $datas=array('');
                 require('view/tableau_de_bord/calendar.php'); 
             }
            

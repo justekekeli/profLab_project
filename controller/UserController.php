@@ -16,13 +16,15 @@ class UserController{
     }
     public function getUsers(){       
         $listUsers=$this->user->readAll();
-        require('../view/test.php');
+        return $listUsers;
 
     }
-    public function getUser($email,$role="",$presentation=false){
+    public function getUser($email,$role="",$admin=0,$presentation=false){
         $theUser = $this->user->readByEmail($email);
+        $ad=$admin;
         $totalStudents=0;
         $totalCourses=0;
+        $nbr=array(0=>array('countS'=>0));
         $courseDAO= new CourseDAO($this->conn);
         if(!$presentation){
             if($role=='prof'){
@@ -37,10 +39,21 @@ class UserController{
         $listOpinions=$this->opinion->readAll($email);
         if(!empty($listCourses)){
             foreach($listCourses as $c){
-                $nbr=  $courseDAO->nbreStudents($c['id']);
+                if($role='prof'){
+                    if($c['blocked']!=1){
+                        $nbr=  $courseDAO->nbreStudents($c['id']);
+                    }
+                    
+                }else if ($role=='student'){
+                    $sc= new Student_CourseDAO($this->conn);
+                    $nbr=$sc->countCourses($email);
+
+                }
+                
                 //total de tous les élèves du prof
-                $totalStudents+=$nbr[0]['countS'];;
-                $totalCourses ++;
+                $totalStudents+=$nbr[0]['countS'];
+                if($c['blocked']!=1){
+                $totalCourses ++;}
               }
         }
         if($presentation){
@@ -51,8 +64,21 @@ class UserController{
         }
     
     }
-    public function addUser($email,$lastN,$firstN,$presentation,$role,$work,$pwd){
+    public function addUser($email,$lastN,$firstN,$role,$pwd){
         $newUser = array(
+            'email'=>$email,
+            'lastname'=>$lastN,
+            'firstname'=>$firstN,
+            'presentation'=>'',
+            'roleUser' =>$role,
+            'work'=>'',
+            'pwd'=>md5($pwd)
+        );
+        $message = $this->user->insert($newUser);
+        header('Location:index.php?action=listUsers'); 
+    }
+    public function updateUser($email,$lastN,$firstN,$role,$work,$presentation,$pwd,$newEmail){
+        $updatedUser = array(
             'email'=>$email,
             'lastname'=>$lastN,
             'firstname'=>$firstN,
@@ -61,23 +87,12 @@ class UserController{
             'work'=>$work,
             'pwd'=>md5($pwd)
         );
-        $message = $this->user->insert($newUser);
-        require('../view/test.php'); 
-    }
-    public function updateUser($email,$lastN,$firstN,$role,$work,$pwd,$newEmail){
-        $updatedUser = array(
-            'email'=>$email,
-            'lastname'=>$lastN,
-            'firstname'=>$firstN,
-            'roleUser' =>$role,
-            'work'=>$work,
-            'pwd'=>Crypt::encrypt($pwd)
-        );
         if($email!=$newEmail){
             $this->user->updateEmail($newEmail,$email);
         }
+      //  print_r($updatedUser);
         $this->user->update($updatedUser);
-        require('../view/test.php'); 
+        header('Location:index.php?action=profil&email='.$newEmail.'&role='.$role); 
     }
     public function giveOpinion($emailReferent,$prof,$lastN,$firstN,$role,$work,$opinionMessage){
         $referent = $this->user->readByEmail($email);
@@ -103,12 +118,7 @@ class UserController{
     }
     public function block($email,$blocked){
         $this->user->updateBlocked($email,$blocked);
-        $course = new CourseDAO($this->conn);
-        $listCourse = $course->readByProf($email);
-        foreach($listCourse as $crs){
-            $course->blocked(1,$crs['id']);
-        }
         $message='l\'utilisateur a été bloqué';
-        require('../view/test.php'); 
+        header('Location:index.php?action=listUsers');  
     }
 }

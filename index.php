@@ -169,6 +169,49 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                 }
 
             break;
+            case 'listUsers':
+                $userController= new UserController();
+                $listUsers=$userController->getUsers();
+                require('view/tableau_de_bord/listUsers.php');
+            break;
+            case 'addUserForm':
+                require('view/tableau_de_bord/addUser.php');
+            break;
+            case 'addUser':
+                $userController= new UserController();
+                $listUsers=$userController->addUser(htmlspecialchars($_POST['email'])
+                ,htmlspecialchars($_POST['nom'])
+                ,htmlspecialchars($_POST['prenom'])
+                ,htmlspecialchars($_POST['role'])
+                ,htmlspecialchars($_POST['pwd']));
+            break;
+            case 'showUser':
+                $userController= new UserController();
+                $listUsers=$userController->getUser(htmlspecialchars($_GET['id']),htmlspecialchars($_GET['role']),1,false);
+            break;
+            case 'updateProfil':
+                $userController= new UserController();
+                $userController->updateUser(htmlspecialchars($_GET['id'])
+                ,htmlspecialchars($_POST['nom'])
+                ,htmlspecialchars($_POST['prenom'])
+                ,htmlspecialchars($_POST['role'])
+                ,htmlspecialchars($_POST['work'])
+                ,htmlspecialchars($_POST['desc'])
+                ,htmlspecialchars($_POST['pwd'])
+                ,htmlspecialchars($_POST['email'])
+            );
+            break;
+            case 'deleteUser':
+                $userController= new UserController();
+                $userController->block(htmlspecialchars($_GET['id']),1);
+            break;
+            case 'fieldAdd':
+                require('view/tableau_de_bord/addField.php');
+            break;
+            case 'insertField':
+                $fieldController=new FieldController();
+                $fieldController->addField(htmlspecialchars($_POST['title']),$_POST['m'],$_POST['p']);
+            break;
         }
 }
 else{

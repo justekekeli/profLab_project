@@ -22,6 +22,20 @@
         $sql = "SELECT * FROM `App_User` ORDER BY `Inscription_date`;";
         $query = $this->connection->prepare($sql);
         $query->execute();
+        
+       return $query->fetchAll(PDO::FETCH_ASSOC);
+       }
+       public function countProf(){
+        $sql = "SELECT COUNT(*) as countP FROM `App_User` WHERE roleUser='prof';";
+        $query = $this->connection->prepare($sql);
+        $query->execute();    
+
+       return $query->fetchAll(PDO::FETCH_ASSOC);
+       }
+       public function countStudents(){
+        $sql = "SELECT COUNT(*) as countS FROM `App_User` WHERE roleUser='student';";
+        $query = $this->connection->prepare($sql);
+        $query->execute();    
 
        return $query->fetchAll(PDO::FETCH_ASSOC);
        }

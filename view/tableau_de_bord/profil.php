@@ -76,30 +76,30 @@ function validateForm() {
                     <div class="row">
                       <div class="col-lg-8 col-lg-offset-2 detailed">
                         <h4 class="mb">Personal Information</h4>
-                        <form role="form" class="form-horizontal" onsubmit="validateForm()">
+                        <form onsubmit=" return validateForm()" role="form" class="form-horizontal" action="index.php?action=updateProfil&amp;id=<?php echo $theUser[0]['email'];?>" method="post">
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Nom</label>
                             <div class="col-lg-6">
-                              <input type="text" placeholder=" " name="nom" value="<?php echo $theUser[0]['lastname']; ?>" class="form-control">
+                              <input type="text" placeholder=" " name="nom" value="<?php echo $theUser[0]['lastname'];?>" class="form-control" <?php if($ad==1){ echo 'disabled';}?>>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Prenom</label>
                             <div class="col-lg-6">
-                              <input type="text" placeholder=" " name="prenom" value="<?php echo $theUser[0]['firstname'];?>" class="form-control">
+                              <input type="text" placeholder=" " name="prenom" value="<?php echo $theUser[0]['firstname'];?>" class="form-control" <?php if($ad==1){ echo 'disabled';}?>>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Email</label>
                             <div class="col-lg-6">
-                              <input type="text" placeholder=" " name="email" value="<?php echo $theUser[0]['email'];?>" class="form-control">
+                              <input type="text" placeholder=" " name="email" value="<?php echo $theUser[0]['email'];?>" class="form-control" <?php if($ad==1){ echo 'disabled';}?>>
                             </div>
                           </div>
                           
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Role</label>
                             <div class="col-lg-6">
-                              <select name="role" class="form-control" size=1>
+                              <select name="role" class="form-control" size=1 <?php if($ad==1){ echo 'disabled';}?>>
                                 <option value="prof" <?php if($theUser[0]['roleUser']=='prof'){echo 'selected';} ?>>Professeur</option>
                                 <option value="student" <?php if($theUser[0]['roleUser']=='student'){echo 'selected';} ?>>Etudiant</option>
                                 <?php if($theUser[0]['roleUser']=='admin'){echo ' <option value="admin" selected>Admin</option>';} ?>
@@ -109,25 +109,26 @@ function validateForm() {
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Profession</label>
                             <div class="col-lg-6">
-                              <input type="text" placeholder=" " name="work" value="<?php echo $theUser[0]['work'];?>" class="form-control">
+                              <input type="text" placeholder=" " name="work" value="<?php echo $theUser[0]['work'];?>" class="form-control"<?php if($ad==1){ echo 'disabled';}?>>
                             </div>
                           </div>
                         <div class="form-group">
                             <label class="col-lg-4 control-label">Petite présentation</label>
                             <div class="col-lg-10">
-                            <textarea rows="4" cols="10" class="form-control" id="" name="desc"><?php echo $theUser[0]['presentation'];?></textarea>
+                            <textarea rows="4" cols="10" class="form-control" id="" name="desc" <?php if($ad==1){ echo 'disabled';}?>><?php echo $theUser[0]['presentation'];?></textarea>
                             </div>
                         </div>
+                        <p style="color:blue;">Saisissez votre actuel mot de passe si vous ne voulez pas le modifier</p>
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Changer de mot de passe</label>
                             <div class="col-lg-6">
-                              <input type="password" placeholder=" " name="pwd" id="pwd" value="" class="form-control">
+                              <input type="password" placeholder=" " name="pwd" id="pwd" value="" class="form-control" <?php if($ad==1){ echo 'disabled';}?>>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Confirmation du mot de passe</label>
                             <div class="col-lg-6">
-                              <input type="password" placeholder=" " id="repwd" class="form-control">
+                              <input type="password" placeholder=" " id="repwd" class="form-control" <?php if($ad==1){ echo 'disabled';}?>>
                             </div>
                           </div>
                           <p style="color:red;" id="message"></p>

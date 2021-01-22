@@ -47,9 +47,6 @@
 								<hr>
 
 								<div class="row">
-									<div class="col-lg-8">
-										<b><a href="">Mot de passe oublié?</a></b>
-									</div>
 									<div class="col-lg-4 text-right">
 										<input class="btn btn-action" type="submit" value="Se connecter"/>
 									</div>
