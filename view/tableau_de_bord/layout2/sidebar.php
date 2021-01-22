@@ -11,6 +11,25 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a id="a-profil" onclick="active(this)" href="index.php?action=profil&amp;email=<?php echo $_SESSION['email']?>&amp;role=<?php echo $_SESSION['role']?>">
+              <i class="fa fa-user"></i>
+              <span>Profil</span>
+              </a>
+          </li>
+          <?php
+          if($_SESSION['role']=='admin')
+          {
+            echo '
+            <li class="sub-menu">
+            <a id="a-users" onclick="active(this)" href="index.php?action=listUsers">
+              <i class="fa fa-users"></i>
+              <span>Utilisateurs</span>
+              </a>
+          </li>
+            ';
+          }
+          ?>
+          <li class="sub-menu">
             <a id="a-dom" onclick="active(this)" href="javascript:;">
               <i class="fa fa-desktop"></i>
               <span>Domaines</span>
@@ -26,6 +45,7 @@
               ?>
             </ul>
           </li>
+          
           <li class="sub-menu">
             <a id="a-crs" onclick="active(this)" href="javascript:;">
               <i class="fa fa-cogs"></i>
@@ -34,12 +54,14 @@
               </a>
             <ul class="sub">
             <?php
+              if($_SESSION['role']!='admin'){
                 if($_SESSION['role']=='prof'){
                   echo '<li><a href="index.php?action=courseAdd&amp;id='.$_SESSION['email'].'"> Ajouter un cours</a></li>';
                 }
                 foreach($_SESSION['mes_cours'] as $course){
                   echo '<li><a href="index.php?action=mes_cours&amp;id='.$course['id'].'">'.$course['title'].'</a></li>';
                 }
+              }
             ?>
             </ul>
           </li>

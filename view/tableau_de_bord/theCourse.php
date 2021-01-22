@@ -47,7 +47,7 @@
               <p>'.$course['descriptionCourse'].'</p>';
               if($_SESSION['email']==$course['prof_id'] && !$userCourse){
                 echo ' <br>
-                <p><a class="btn btn-theme bg-danger" href="index.php?action=suscribe&amp;course='.$course['id'].'&amp;student='.$_SESSION['email'].'"><i class="fa fa-book"></i> Participer au cours</a></p>';
+                <p><a class="btn btn-theme bg-danger" href="index.php?action=suscribe&amp;course='.$course['id'].'&amp;student='.$_SESSION['email'].'&amp;p='.$_SESSION['pwd'].'"><i class="fa fa-book"></i> Participer au cours</a></p>';
               }
               if($userCourse){
                 echo ' <br>
@@ -65,8 +65,7 @@
                   <div class="form-panel" style="box-shadow:none;">
                     <form class="form-horizontal style-form" method="post"';
                      foreach($theCourse as $course){
-                        echo 'action="index.php?addComment&amp;cs='.$_SESSION['email'].'&amp;id=
-                        '.$course['id'].'" >';
+                        echo 'action="index.php?action=addComment&amp;cs='.$_SESSION['email'].'&amp;id='.$course['id'].'" >';
                       }
                       echo '                 
                       <div class="form-group">

@@ -32,6 +32,7 @@
             
             <form role="form" class="form-horizontal text-center" method="post" action=<?php if($type=='add'){echo 'index.php?action=insertCourse';}else{echo 'index.php?action=updateCourse';}?>>
             <input name="prof" type="hidden" value=<?php echo $_GET['id']?>>
+            <input name="p" type="hidden" value=<?php echo $_SESSION['pwd']?>>
               <div class="form-group">
                 <label class="col-lg-4 control-label">Titre</label>
                 <div class="col-lg-6">
@@ -99,8 +100,8 @@
               </div>
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10" style="margin-top:4rem;">
-                  <button class="btn btn-theme" type="submit">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-theme04" type="button">Cancel</button>
+                  <button class="btn btn-theme" type="submit">Valider</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button class="btn btn-theme04" type="button">Annuler</button>
                 </div>
               </div>
               
