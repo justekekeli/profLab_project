@@ -16,7 +16,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="view/home.php">Home</a></li>
-			<li class="active">About</li>
+			<li class="active">A Propos</li>
 		</ol>
 
 		<div class="row">
@@ -24,18 +24,18 @@
 			<!-- Article main content -->
 			<article class="col-sm-8 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">About us</h1>
+					<h1 class="page-title">A propos de nous</h1>
 				</header>
-				<h3>Lorem ipsum</h3>
-				<p><img src="assets/assets/images/mac.jpg" alt="" class="img-rounded pull-right" width="300" > Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam beatae soluta accusantium iusto nihil nesciunt unde veniam magnam repudiandae sapiente.</p>
-				<p>Quos, aliquam nam velit impedit minus tenetur beatae voluptas facere sint pariatur! Voluptatibus, quisquam, error, est assumenda corporis inventore illo nesciunt iure aut dolor possimus repellat minima veniam alias eius!</p>
-				<h3>Necessitatibus</h3>
-				<p>Velit, odit, eius, libero unde impedit quaerat dolorem assumenda alias consequuntur optio quae maiores ratione tempore sit aliquid architecto eligendi pariatur ab soluta doloremque dicta aspernatur labore quibusdam dolore corrupti quod inventore. Maiores, repellat, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam!</p>
-				<h3>Fugit, laboriosam</h3>
-				<p>Eum, quasi, est, vitae, ipsam nobis consectetur ea aspernatur ad eos voluptatibus fugiat nisi perferendis impedit. Quam, nulla, excepturi, voluptate minus illo tenetur sint ab in culpa cumque impedit quibusdam. Saepe, molestias quia voluptatem natus velit fugiat omnis rem eos sapiente quasi quaerat aspernatur quisquam deleniti accusantium laboriosam odio id?</p>
-				<h3>Doloribus, illo ipsum</h3>
-				<p>Velit, odit, eius, libero unde impedit quaerat dolorem assumenda alias consequuntur optio quae maiores ratione tempore sit aliquid architecto eligendi pariatur ab soluta doloremque dicta aspernatur labore quibusdam dolore corrupti quod inventore. Maiores, repellat, consequuntur eius repellendus eos aliquid molestiae ea laborum ex quibusdam laudantium voluptates placeat consectetur quam aliquam!</p>
-				<p>Eum, quasi, est, vitae, ipsam nobis consectetur ea aspernatur ad eos voluptatibus fugiat nisi perferendis impedit. Quam, nulla, excepturi, voluptate minus illo tenetur sint ab in culpa cumque impedit quibusdam. Saepe, molestias quia voluptatem natus velit fugiat omnis rem eos sapiente quasi quaerat aspernatur quisquam deleniti accusantium laboriosam odio id?</p>
+				<h3>ProfLab</h3>
+				<p><img src="assets/images/logo.PNG" alt="" class="img-rounded pull-right" width="300" > Nous sommes une jeune entreprise qui c'est lancer dans la créations d'applications web.</p>
+				<p>Pour commencer bien comme il faut, nous avons trouver une solution pour aider les apprenants en difficultés a cose de la pandémie; qu'ils soient élèves, étudiants ou encore particulier; a se remettres à niveau .</p>
+				<h3>Pourquoi?</h3>
+				<p>Un fait est que la pandémie actuel a mis en difficulté les activités dans pratiquement tous les domaines. Dans l'optique d'aider les jeunes dans le secteur de l'éducation nous avons proposer cette solution et cela permettra a certains étudiants d'avoir un accompagnement et a d'autre de comprendre plus en détails les éléments qu'ils n'ont pas bien compris en cours distanciel officiels.</p>
+				<h3>Siège</h3>
+				<p>Nous sommes particulièrement en ligne pour le moment et sommes joingnable a partir de l'onglet contact pour d'éventuels informations.</p>
+				<h3>Les services que l'on propose</h3>
+				<p>Nous recevons des demandes de confessionnement de sites web, d'applications web et android</p>
+				
 				
 			</article>
 			<!-- /Article -->
@@ -44,14 +44,14 @@
 			<aside class="col-sm-4 sidebar sidebar-right">
 
 				<div class="widget">
-					<h4>Vacancies</h4>
-					<ul class="list-unstyled list-spaces">
-						<li><a href="">Lorem ipsum dolor</a><br><span class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, laborum.</span></li>
-						<li><a href="">Totam, libero, quis</a><br><span class="small text-muted">Suscipit veniam debitis sed ipsam quia magnam eveniet perferendis nisi.</span></li>
-						<li><a href="">Enim, sequi dignissimos</a><br><span class="small text-muted">Reprehenderit illum quod unde quo vero ab inventore alias veritatis.</span></li>
-						<li><a href="">Suscipit, consequatur, aut</a><br><span class="small text-muted">Sed, mollitia earum debitis est itaque esse reiciendis amet cupiditate.</span></li>
-						<li><a href="">Nam, illo, veritatis</a><br><span class="small text-muted">Delectus, sapiente illo provident quo aliquam nihil beatae dignissimos itaque.</span></li>
-					</ul>
+					<h4>Address</h4>
+					<address>
+						77 RUE DE RENNES, RENNES, TX 35000, FRANCE
+					</address>
+					<h4>Phone:</h4>
+					<address>
+						(+33) 0601020304
+					</address>
 				</div>
 
 			</aside>

@@ -16,7 +16,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="public/home.php">Acceuil</a></li>
-			<li class="active">A propos</li>
+			<li class="active">Contact</li>
 		</ol>
 
 		<div class="row">
@@ -55,7 +55,7 @@
 								<label class="checkbox"><input type="checkbox"> S'inscrire a la Newsletters</label>
 							</div>-->
 							<div class="col-sm-6 text-right">
-								<input class="btn btn-action" type="submit" value="Envoyer">
+								<input class="btn btn-action" type="submit" value="Envoyer"><br><br>
 							</div>
 						</div>
 					</form>

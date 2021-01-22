@@ -24,10 +24,11 @@
 	<!-- Intro -->
 	<div class="container text-center">
 		<br> <br>
-		<h2 class="thin">The best place to tell people why they are here</h2>
+		<h2 class="thin">Le meilleur endroit pour comprendre ses cours</h2>
 		<p class="text-muted">
-			The difference between involvement and commitment is like an eggs-and-ham breakfast:<br> 
-			the chicken was involved; the pig was committed.
+			Ici sur notre site vous pourrez améliorer gratuitement vos compétenses dans plusieurs domaine.
+			Des cours de soutiens sont proposés afin d'accompagner les élèves, collègiens, lycéens, etudiants, et autres des cours de soutiens dans 
+			de multiples domaines afin qu'ils puisse s'en sortir haut les mains de cette crise actuel. 
 		</p>
 	</div>
 	<!-- /Intro-->
@@ -36,31 +37,31 @@
 	<div class="jumbotron top-space">
 		<div class="container">
 			
-			<h3 class="text-center thin">Reasons to use this template</h3>
+			<h3 class="text-center thin">TOP 4 des cours les plus suivis</h3>
 			
 			<div class="row">
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Bootstrap-powered</h4></div>
+					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Tech Info</h4></div>
 					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</p>
+						<p>Ce cours de mathématiques, plus précisement de mathématiques appliqués à l'informatique permet de comprendre comment on utilise les maths en  informatiques et comment les mathématiques interviennent en informatique.</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Fat-free</h4></div>
+					<div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Introduction a l'électronique</h4></div>
 					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! </p>
+						<p> Dans ce cours d'informatique, vous apprendrez a les bases de l'électronique, la définition des principaux éléments de base, qu'est ce que c'est que l'électronique et commencer de petites applications afin de tester ce que vous avez appris.</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Creative Commons</h4></div>
+					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Comment écrire un roman</h4></div>
 					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?</p>
+						<p>Dans ce cours de littérature, vous apprendrez comment écrire un roman de bout en bout, quels questions il faut se poser afin d'avoir un bon contenu et l'inspiration suffisante pour écrire un roman propre et de manière conventionnel.</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Author's support</h4></div>
+					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Comprendre la bourse</h4></div>
 					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? </p>
+						<p>Dans ce cours d'électronique, vous apprendrez les base et les définitions des principaux éléments liés a la bourse. Vous apprendrez en même temps ce que c'est qu'un graphe boursier et vous apprendrez a le lire.</p>
 					</div>
 				</div>
 			</div> <!-- /row  -->
@@ -72,43 +73,41 @@
 	<!-- container -->
 	<div class="container">
 
-		<h2 class="text-center top-space">Frequently Asked Questions</h2>
+		<h2 class="text-center top-space">Questions fréquements posés</h2>
 		<br>
 
 		<div class="row">
 			<div class="col-sm-6">
-				<h3>Which code editor would you recommend?</h3>
-				<p>I'd highly recommend you <a href="http://www.sublimetext.com/">Sublime Text</a> - a free to try text editor which I'm using daily. Awesome tool!</p>
+				<h3>Ces cours ont un contenus complet?</h3>
+				<p>Bien évidement! Ce sont des cours d'accompagnement proposés aux personnes qui en ont besoin afin de les aidés a mieux comprendre les cours avec lesquels ils ont du mal en distanciel.</p>
 			</div>
 			<div class="col-sm-6">
-				<h3>Nice header. Where do I find more images like that one?</h3>
+				<h3>Interessant ce site. Mais est ce vraiment gratuit?</h3>
 				<p>
-					Well, there are thousands of stock art galleries, but personally, 
-					I prefer to use photos from these sites: <a href="http://unsplash.com">Unsplash.com</a> 
-					and <a href="http://www.flickr.com/creativecommons/by-2.0/tags/">Flickr - Creative Commons</a></p>
+					Bien évidement vous n'aurai que 0 euros a payer.
 			</div>
-		</div> <!-- /row -->
+		</div> 
+		<!-- /row -->
 
 		<div class="row">
 			<div class="col-sm-6">
-				<h3>Can I use it to build a site for my client?</h3>
+				<h3>Comment profiter de l'accompagnement?</h3>
 				<p>
-					Yes, you can. You may use this template for any purpose, just don't forget about the <a href="http://creativecommons.org/licenses/by/3.0/">license</a>, 
-					which says: "You must give appropriate credit", i.e. you must provide the name of the creator and a link to the original template in your work. 
+					En suivant les étapes suivantes: 
+					cliquer sur sign in /sign up et sur register en lien bleu au dessus du champs email.
+					Ensuite remplir les informations demander et pour finir, revenir se connecter.
+					Voilà, rien de plus facile.
 				</p>
 			</div>
 			<div class="col-sm-6">
-				<h3>Can you customize this template for me?</h3>
-				<p>Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.</p>
+				<h3>Les cours sont dispensés en Français?</h3>
+				<p>Oui majoritairement, juste les cours de langues sont dans les langues en question</p>
 			</div>
 		</div> <!-- /row -->
 
-		<div class="jumbotron top-space">
-			<h4>Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.</h4>
-     		<p class="text-right"><a class="btn btn-primary btn-large">Learn more »</a></p>
-  		</div>
+		
 
-</div>	<!-- /container -->
+	</div>	<!-- /container -->
 	
 	<!-- Social links. @TODO: replace by link/instructions in template -->
 	<section id="social">

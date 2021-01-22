@@ -16,7 +16,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="public/home.php">Home</a></li>
-			<li class="active">Right Sidebar</li>
+			<li class="active">Informatique</li>
 		</ol>
 
 		<div class="row">
@@ -24,23 +24,21 @@
 			<!-- Article main content -->
 			<article class="col-md-8 maincontent">
 				<header class="page-header">
-					<h1 class="page-title">Lorem ipsum dolor sit amet, consectetur.</h1>
+					<h1 class="page-title">Informatiques</h1>
 				</header>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!</p>
-				<p>Consectetur cupiditate labore repudiandae beatae nisi fugiat facilis natus illum vitae doloremque. In, perspiciatis, natus, impedit voluptas itaque odio repudiandae placeat nisi totam repellendus earum dolores mollitia tempore quasi beatae alias cum dicta maxime laborum corporis harum porro magnam laboriosam.</p>
-				<p>Aut, eaque, minus atque alias odio mollitia cum nisi ipsa nulla natus quae minima similique ipsam aspernatur molestias animi in deleniti nam. Tempora, labore, modi eum perspiciatis doloremque sequi nam illo corporis iusto maiores nisi recusandae repellat animi reiciendis accusamus.</p>
+				<p>Les cours sont de tous niveau et les niveaux sont précisés sur chaques étiquettes de cours. Les cours portent sur les languages de programation, sur l'architecture des ordinateurs, sur le système Informatique, sur comment utiliser le tableur excel, word, power point et tout le pack office, sur le hacking et bien d'autres choses.</p>
 
-				<h2>A, quibusdam, nobis, eveniet consequatur</h2>
-				<p>A, quibusdam, nobis, eveniet consequatur alias doloremque officia blanditiis fuga et numquam labore reiciendis voluptas quis repellat quos sunt non dolore consectetur at sit nam tenetur dolorem? Harum, quas, sit perspiciatis esse odit temporibus aperiam nulla aspernatur sequi fugiat tempore?</p>
-				<p>Ad velit consequuntur quo qui odit quam sapiente repudiandae et ea pariatur? Ex sapiente beatae nobis consectetur ea. Deleniti, beatae, magnam, dolorum, fuga nostrum quas laboriosam sapiente temporibus enim voluptates ullam impedit atque quae provident quos mollitia aperiam perferendis amet.</p>
+				<h2>But et objectifs</h2>
+				<p>Les cours compris dans ce domaine permettent de revoir les bases des différents éléments informatiques et électroniques jusqu'aux applications poussés des mathématique. En d'autre mots de l'apprentissage des opérations de bases jusqu'aux différentes analyses de processus.</p>
+				<p>Ces cours permettent de travailler les aptitudes informatiques et électroniques de ce qui en ont besoins et permet également a ceux qui ont besoins d'applications d'en faire a travers de petits exemples pratiques vus dans les cours proposés.</p>
 
-				<blockquote>Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum, ex, quasi incidunt similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi facere ullam voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus.</blockquote>
-				<p>Odit, laudantium, dolores, natus distinctio labore voluptates in inventore quasi qui nobis quis adipisci fugit id! Aliquam alias ea modi. Porro, odio, sed veniam hic numquam qui ad molestiae sint placeat expedita? Perferendis, enim qui numquam sequi obcaecati molestiae fugiat!</p>
-				<p>Aperiam, odit, quasi, voluptate fugiat quisquam velit magni provident corporis animi facilis illo eveniet eum obcaecati adipisci blanditiis quas labore doloribus eos veniam repudiandae suscipit tempora ad harum odio eius distinctio hic deleniti. Sunt fuga ad perspiciatis repellat deleniti omnis!</p>
-
-				<h3>Numquam, ut iure quia facere totam quas odit illo incidunt</h3>
-				<p>Est, maiores, fuga sed nemo qui veritatis ducimus placeat odit quisquam dolorum. Rem, sunt, praesentium veniam maiores quia molestias eos fugit eaque ducimus veritatis provident assumenda. Quia, fuga, voluptates voluptatibus quis enim nam asperiores aliquam dignissimos ullam recusandae debitis iste.</p>
-				<p>Dignissimos, beatae, praesentium illum eos autem perspiciatis? Minus, non, tempore, illo, mollitia exercitationem tempora quas harum odio dolores delectus quidem laudantium adipisci ducimus ullam placeat eaque minima quae iure itaque corporis magni nesciunt eius sed dolor doloremque id quasi nisi.</p>
+				<blockquote>Le cycle d'obsolescence des ordinateurs est devenu si rapide, que dans les hypermarchés informatiques du futur, il y aura des décharges juste en face des caisses enregistreuses.</blockquote>
+				<p>La citation de Dave Barry, atteste que l'informatique permet de tout faire aujourdhui. Aussi, elle nous fait comprendre qu'a force de réfléchir et de chercher, on finis par réaliser ce que l'on pense impossible.</p>
+				<p>Les cours compris dans ce domaine permettent de revoir les bases des différents éléments informatiques et électroniques jusqu'aux applications poussés des mathématique. En d'autre mots de l'apprentissage des opérations de bases jusqu'aux différentes analyses de processus.</p>
+				<p>Les cours compris dans ce domaine permettent de revoir les bases des différents éléments informatiques et électroniques jusqu'aux applications poussés des mathématique. En d'autre mots de l'apprentissage des opérations de bases jusqu'aux différentes analyses de processus.</p>
+				<p>Les cours compris dans ce domaine permettent de revoir les bases des différents éléments informatiques et électroniques jusqu'aux applications poussés des mathématique. En d'autre mots de l'apprentissage des opérations de bases jusqu'aux différentes analyses de processus.</p>
+				
+				
 			</article>
 			<!-- /Article -->
 			
@@ -49,21 +47,21 @@
 
 				<div class="row widget">
 					<div class="col-xs-12">
-						<h4>Lorem ipsum dolor sit</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel.</p>
+						<h4>Computer Domain</h4>
+						<p>Les cours de ce domaine ci porte sur les sciences informatiques: l'utilisation du pack office, l'études de languages de programmations, l'analyse et l'étude du secteur cyber, les bases de la sécurité informatique, l'architecture des systèmes informatiques , dee l'électronique et bien d'autres choses</p>
 					</div>
 				</div>
 				<div class="row widget">
 					<div class="col-xs-12">
-						<h4>Lorem ipsum dolor sit</h4>
-						<p><img src="assets/images/1.jpg" alt=""></p>
+						<h4>Hackers</h4>
+						<p><img src="assets/images/info1.jpg" alt=""></p>
 					</div>
 				</div>
 				<div class="row widget">
 					<div class="col-xs-12">
-						<h4>Lorem ipsum dolor sit</h4>
-						<p><img src="assets/images/2.jpg" alt=""></p>
-						<p>Qui, debitis, ad, neque reprehenderit laborum soluta dolor voluptate eligendi enim consequuntur eveniet recusandae rerum? Atque eos corporis provident tenetur.</p>
+						<h4>codeurs</h4>
+						<p><img src="assets/images/info2.jpg" alt=""></p>
+						<p>Les adeptes du code vous êtes au bon endroits parce que vous pourrez discutés des erreurs que vous renvoi la console avec les profs affin de trouver les solutions a ces dernières</p>
 					</div>
 				</div>
 
