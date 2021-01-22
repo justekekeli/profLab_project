@@ -33,7 +33,7 @@ class FieldDAO{
         $sql = "UPDATE `Course_Field` SET `title`=:val WHERE `id`=:id;";
         $query = $this->connection->prepare($sql);
         $query->bindValue(':val', $title, PDO::PARAM_STR);
-        $query->bindValue(':id', $id, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         return "le titre a été bien changé";
     }

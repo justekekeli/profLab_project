@@ -37,15 +37,15 @@ class CourseController{
         $days=array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
         require('view/tableau_de_bord/theCourse.php');       
     }
-    public function addCourse($title,$day,$seanceS,$seanceE,$prof,$classe,$fieldId,$desc,$link){
+    public function addCourse($title,$day,$seanceS,$seanceE,$prof,$classe,$fieldId,$desc,$link,$p){
         $findedClass = $this->courseClass->readByTitle($classe);
         if(!empty($findedClass)){
             foreach($findedClass as $f){
                 $class_id=$f['id'];
             }
         }else{
-            $classDao->insert($class);
-            $findedClass = $classDao->readByTitle($class);
+            $this->courseClass->insert($classe);
+            $findedClass = $this->courseClass->readByTitle($classe);
             foreach($findedClass as $f){
                 $class_id=$f['id'];
             }
@@ -61,8 +61,9 @@ class CourseController{
             'desc'=>$desc,
             'link'=>$link
         );
+       // print_r($newCourse);
         $message = $this->course->insert($newCourse);
-        header('Location:index.php?action=cal&amp;m='.$_SESSION['email'].'&p='. $_SESSION['pwd']); 
+       header('Location:index.php?action=cal&m='.$prof.'&p='. $p); 
     }
     public function updateCourse($title,$price,$seanceTime,$prof,$class_id,$fieldId,$desc,$id){
         $updatedCourse = array(
@@ -91,7 +92,7 @@ class CourseController{
         $crsDAO->insert($newSub);
         $_SESSION['mes_cours']=$this->course->readByAttribute($email,"student");
         $message="Vous êtes enregistré pour le cours particulier ";
-        header('Location:index.php?action=course&id='.$course);
+        header('Location:index.php?action=cal&m='.$student.'&p='. $p);
        
 
    }

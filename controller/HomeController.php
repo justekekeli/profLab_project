@@ -32,7 +32,8 @@
                     $userInfos['role']=$connected['roleUser'];
                 }
                 if($userInfos['role']=='admin'){
-                    require('view/tableau_de_bord/acceuil.php');
+                    $datas=array('');
+                    require('view/tableau_de_bord/calendar.php');
                 }else{   
                     $datas = $this->load($userInfos['email'],$userInfos['role']);       
                     require('view/tableau_de_bord/calendar.php');

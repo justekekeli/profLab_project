@@ -19,24 +19,35 @@ class UserController{
         require('../view/test.php');
 
     }
-    public function getUser($email,$presentation=false){
+    public function getUser($email,$role="",$presentation=false){
         $theUser = $this->user->readByEmail($email);
         $totalStudents=0;
         $totalCourses=0;
-        if($presentation){
-            $courseDAO= new CourseDAO($this->conn);
-            $listCourses= $courseDAO->readByAttribute($email,"prof");
-            $listOpinions=$this->opinion->readAll($email);
-            foreach($listCourses as $c){
-              $nbr=  $courseDAO->nbreStudents($c['id']);
-              //total de tous les élèves du prof
-              $totalStudents+=$nbr[0]['countS'];;
-              $totalCourses ++;
+        $courseDAO= new CourseDAO($this->conn);
+        if(!$presentation){
+            if($role=='prof'){
+                $listCourses= $courseDAO->readByAttribute($email,"prof");
+            }else if ($role=='student'){
+                $listCourses= $courseDAO->readByAttribute($email,"student");
             }
+        }else{
+            $listCourses= $courseDAO->readByAttribute($email,"prof");
+        }
+       
+        $listOpinions=$this->opinion->readAll($email);
+        if(!empty($listCourses)){
+            foreach($listCourses as $c){
+                $nbr=  $courseDAO->nbreStudents($c['id']);
+                //total de tous les élèves du prof
+                $totalStudents+=$nbr[0]['countS'];;
+                $totalCourses ++;
+              }
+        }
+        if($presentation){
+
             require("view/tableau_de_bord/profPresentationPage.php");
         }else{       
-            $listOpinions = $this->opinion->readAll($email);
-            require('../view/test.php');   
+            require('view/tableau_de_bord/profil.php');   
         }
     
     }

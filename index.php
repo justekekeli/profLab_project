@@ -69,6 +69,12 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                     $homeController->authentificate($_GET['m'],$_GET['p']);
                 }
             break;
+            case 'profil':
+                if(!empty($_GET['email'])&& !empty($_GET['role'])){
+                $userController= new UserController();
+                $userController->getUser($_GET['email'],$_GET['role']);
+                }
+            break;
             case 'dom':
                 if(!empty($_GET['id'])){
                     $fieldController= new FieldController();
@@ -93,7 +99,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'suscribe':
                 if(!empty($_GET['course']) && !empty($_GET['student']) ){
                     $courseController= new CourseController();
-                    $courseController->subscribe($_GET['course'],$_GET['student']);
+                    $courseController->subscribe($_GET['course'],$_GET['student'],$_GET['p']);
                 }
 
             break;
@@ -107,7 +113,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
             case 'addComment':
                 if(!empty($_GET['cs']) && !empty($_GET['id']) && !empty($_POST['content'])){
                     $commentController= new CommentController();
-                    $commentController->addComment($_POST['content'],$_GET['cs'],$_GET['id']);
+                    $commentController->addComment($_POST['content'],$_GET['cs'],intval($_GET['id']));
                 }
 
             break;
@@ -131,6 +137,7 @@ if(isset($_GET['action']) && !empty($_GET['action'])){
                 ,htmlspecialchars($_POST['field'])
                 ,htmlspecialchars($_POST['desc'])
                 ,htmlspecialchars($_POST['link'])
+                ,htmlspecialchars($_POST['p'])
             );
             break;
         }

@@ -17,14 +17,15 @@ class CommentController{
        $listCourse= $this->comment->readAll($id);
 
     }
-    public function addComment(String $content,String $email,id $coursId){
+    public function addComment(String $content,String $email,int $coursId){
         $newComment=array(
             'content'=>$content,
-            'customer_id'=>$email,
-            'course_id'=>intval($coursId)
+            'customer'=>$email,
+            'coursId'=>intval($coursId)
         );
         $this->comment->insert($newComment);
-        require('../view/test.php'); 
+        $courseController  = new CourseController();
+        $courseController->getCourse($coursId);
     }
     
    public function deleteComment(int $id){

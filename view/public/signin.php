@@ -37,7 +37,7 @@
 							<form action="index.php?action=auth" method="post">
 								<div class="top-margin">
 									<label>Email <span class="text-danger">*</span></label>
-									<input type="email" class="form-control" name="email" required>
+									<input type="email" class="form-control" name="email" required autocomplete="off">
 								</div>
 								<div class="top-margin">
 									<label>Mot de passe <span class="text-danger">*</span></label>
