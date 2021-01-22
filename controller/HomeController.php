@@ -88,7 +88,7 @@
         if(isset($data)) {
             $datas=array($data,$courses);
         }else{
-            $datas('',$courses);
+            $datas=array('',$courses);
         }
         
         return $datas;

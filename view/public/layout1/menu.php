@@ -7,7 +7,7 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="index.php">Acceuil</a></li>
+					<li ><a href="index.php">Acceuil</a></li>
 					<li><a href="index.php?action=about">A propos</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Domaines <b class="caret"></b></a>

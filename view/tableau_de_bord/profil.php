@@ -75,7 +75,7 @@ function validateForm() {
                   <div id="edit" class="tab-pane">
                     <div class="row">
                       <div class="col-lg-8 col-lg-offset-2 detailed">
-                        <h4 class="mb">Personal Information</h4>
+                        <h4 class="mb">Informations personnelles</h4>
                         <form onsubmit=" return validateForm()" role="form" class="form-horizontal" action="index.php?action=updateProfil&amp;id=<?php echo $theUser[0]['email'];?>" method="post">
                           <div class="form-group">
                             <label class="col-lg-4 control-label">Nom</label>

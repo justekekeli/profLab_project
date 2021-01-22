@@ -105,7 +105,7 @@ class CourseController{
        $this->course->blocked(1,$id);
        header('Location:index.php?action=cal&m='.$prof.'&p='. $p); 
    }
-   public function subscribe($course,$student){
+   public function subscribe($course,$student,$p){
         $crsDAO= new Student_CourseDAO($this->conn);
         $newSub=array(
             'course'=>intval($course),
